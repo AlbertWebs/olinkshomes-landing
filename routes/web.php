@@ -16,7 +16,7 @@ use App\Http\Controllers\HomeController;
 */
 
 
-Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('is_admin');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
