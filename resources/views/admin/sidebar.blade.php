@@ -4,7 +4,7 @@
     <!--== USER INFO ==-->
     <div class="sb2-12">
         <ul>
-            <li><img src="{{url('/')}}/uploads/users/{{Auth::user()->image }}" alt="">
+            <li><img src="{{url('/')}}/admin-theme/images/placeholder.jpg" alt="Molly">
             </li>
             <li>
                 <h5>{{Auth::user()->name}}<span>{{$SiteSettings->location}}</span></h5>
@@ -50,21 +50,37 @@
             <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-folder" aria-hidden="true"></i> Categories </a>
                 <div class="collapsible-body left-sub-menu">
                     <ul>
-                        <li><a href="{{url('/')}}/admin/categories">Main Categories </a>
+                        <li><a href="{{url('/')}}/admin/addCategory">Add Category</a>
                         </li>
-                        <li><a href="{{url('/')}}/admin/addCategory">Add Landing Category</a>
+
+                        <li><a href="{{url('/')}}/admin/categories">All  Categories </a>
                         </li>
+
+                        <li><a href="{{url('/')}}/admin/categories/web">Web  Categories </a>
+                        </li>
+
                         {{--  --}}
-                        <li><a href="{{url('/')}}/admin/categories">Real Estate Categories </a>
+                        <li><a href="{{url('/')}}/admin/categories/homes">Real Estate Categories </a>
                         </li>
-                        <li><a href="{{url('/')}}/admin/addCategory">Add Real Estate Category</a>
-                        </li>
+
                         {{--  --}}
-                        <li><a href="{{url('/')}}/admin/categories">Ecommerce Categories </a>
+                        <li><a href="{{url('/')}}/admin/categories/shop">Ecommerce Categories </a>
                         </li>
-                        <li><a href="{{url('/')}}/admin/addCategory">Add Ecommerce Category</a>
-                        </li>
+
                         {{--  --}}
+                    </ul>
+                </div>
+            </li>
+            {{--  --}}
+
+            {{--  --}}
+            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-folder" aria-hidden="true"></i> Services </a>
+                <div class="collapsible-body left-sub-menu">
+                    <ul>
+                        <li><a href="{{url('/')}}/admin/categories">All Services </a>
+                        </li>
+                        <li><a href="{{url('/')}}/admin/addCategory">Add Services</a>
+                        </li>
                     </ul>
                 </div>
             </li>
@@ -106,9 +122,9 @@
              <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-shopping-cart" aria-hidden="true"></i> E-Commerce </a>
                 <div class="collapsible-body left-sub-menu">
                     <ul>
-                        <li><a href="{{url('/')}}/admin/homes">All Products </a>
+                        <li><a href="{{url('/')}}/admin/products">All Products </a>
                         </li>
-                        <li><a href="{{url('/')}}/admin/addHome">Add Product </a>
+                        <li><a href="{{url('/')}}/admin/addProduct">Add Product </a>
                         </li>
                     </ul>
                 </div>

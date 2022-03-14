@@ -18,7 +18,7 @@
         @include('admin.sidebar')
 
         <!--== BODY INNER CONTAINER ==-->
-        
+
         <div class="sb2-2">
             <div class="sb2-2-2">
                 <ul>
@@ -29,7 +29,7 @@
                     <li class="page-back"><a href="{{url('/')}}/admin/categories"><i class="fa fa-backward" aria-hidden="true"></i> All Categories</a>
                     </li>
                 </ul>
-               
+
             </div>
             <div class="sb2-2-add-blog sb2-2-1">
                 <h2>Add New Categories</h2>
@@ -38,7 +38,7 @@
                     @if(Session::has('message'))
                                   <div class="alert alert-success">{{ Session::get('message') }}</div>
                    @endif
-   
+
                    @if(Session::has('messageError'))
                                   <div class="alert alert-danger">{{ Session::get('messageError') }}</div>
                    @endif
@@ -49,6 +49,17 @@
                         <div class="input-field col s12">
                             <input id="list-title" name="title" type="text" value="" class="validate">
                             <label for="list-title">Enter Category Title</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select name="identifier">
+                                <option value="" disabled selected>Choose Identifier type</option>
+                                <option value="web">web</option>
+                                <option value="homes">homes</option>
+                                <option value="shop">shop</option>
+                            </select>
+                            <label>Select Category</label>
                         </div>
                     </div>
                     <div class="row">

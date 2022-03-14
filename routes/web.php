@@ -118,6 +118,7 @@ Route::get('admin/deleteMessage/{id}', [AdminsController::class, 'deleteMessage'
 
 // Categories
 Route::get('admin/categories', [AdminsController::class, 'categories'])->middleware('is_admin');
+Route::get('admin/categories/{identifier}', [AdminsController::class, 'categories_identify'])->middleware('is_admin');
 Route::get('admin/addCategory', [AdminsController::class, 'addCategory'])->middleware('is_admin');
 Route::post('admin/add_Category', [AdminsController::class, 'add_Category'])->middleware('is_admin');
 Route::get('admin/editCategories/{id}', [AdminsController::class, 'editCategories'])->middleware('is_admin');
@@ -177,6 +178,12 @@ Route::get('admin/switchStatus/{id}', [AdminsController::class, 'switchStatus'])
 
 Route::get('admin/updateSlung', [AdminsController::class, 'updateSlung'])->middleware('is_admin');
 
+Route::get('admin/products', [AdminsController::class, 'products'])->middleware('is_admin');
+Route::get('admin/editProduct/{id}', [AdminsController::class, 'editProduct'])->middleware('is_admin');
+Route::get('admin/deleteProduct/{id}', [AdminsController::class, 'deleteProduct'])->middleware('is_admin');
+Route::post('admin/edit_Product/{id}',  [AdminsController::class, 'edit_Product'])->middleware('is_admin');
+Route::get('admin/addProduct',  [AdminsController::class, 'addProduct'])->middleware('is_admin');
+Route::post('admin/add_Product',  [AdminsController::class, 'add_Product'])->middleware('is_admin');
 
 
 

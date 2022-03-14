@@ -35,7 +35,7 @@ use App\Models\Signal;
 
 use App\Models\Blog;
 
-use App\Models\Course;
+use App\Models\Product;
 
 use App\Models\Topic;
 
@@ -479,6 +479,16 @@ class AdminsController extends Controller
         return view('admin.categories',compact('page_title','Category','page_name'));
     }
 
+    public function categories_identify($identifier){
+        activity()->log('Accessed All Categories');
+        $Category = Category::where('identifier',$identifier)->get();
+        $page_title = 'list';
+        $page_name = 'Categories';
+        return view('admin.categories',compact('page_title','Category','page_name'));
+    }
+
+
+
     public function addCategory(){
         activity()->log('Accessed Add Category Page');
         $page_title = 'formfiletext';
@@ -502,6 +512,7 @@ class AdminsController extends Controller
         $Category->slung = Str::slug($request->title);
         $Category->content = $request->content;
         $Category->image = $image;
+        $Category->identifier = $request->identifier;
         $Category->save();
         Session::flash('message', "Category Has Been Added");
         return Redirect::back();
@@ -1997,6 +2008,317 @@ class AdminsController extends Controller
         }
         return "Done";
     }
+
+// Products
+public function addProduct(){
+    $page_title = 'formfiletext';//For Layout Inheritance
+    $page_name = 'Add New Product';
+    return view('admin.addProduct',compact('page_title','page_name'));
+}
+
+public function add_Product(Request $request){
+
+    $path = 'uploads/product';
+    if(isset($request->fb_pixels)){
+        $fileSize = $request->file('fb_pixels')->getSize();
+            if($fileSize>=1800000){
+            Session::flash('message', "File Exceeded the maximum allowed Size");
+            Session::flash('messageError', "An error occured, You may have exceeded the maximum size for an image you uploaded");
+            return Redirect::back();
+            }else{
+
+                $file = $request->file('fb_pixels');
+                /** Renaming Edits */
+                $extension = $file->getClientOriginalExtension();
+                $image_main_temp = $request->name.'-fb_pixels.'.$extension;
+                $fb_pixels = str_replace(' ', '-',$image_main_temp);
+                $file->move($path, $fb_pixels);
+                /* Renaming Edits Ends*/
+            }
+    }else{
+        $fb_pixels = $request->pro_img_cheat;
+    }
+
+    if(isset($request->thumbnail)){
+        $fileSize = $request->file('thumbnail')->getSize();
+            if($fileSize>=1800000){
+            Session::flash('message', "File Exceeded the maximum allowed Size");
+            Session::flash('messageError', "An error occured, You may have exceeded the maximum size for an image you uploaded");
+            return Redirect::back();
+            }else{
+
+                $file = $request->file('thumbnail');
+                /** Renaming Edits */
+                $extension = $file->getClientOriginalExtension();
+                $image_main_temp = $request->name.'-thumbnail.'.$extension;
+                $thumbnail = str_replace(' ', '-',$image_main_temp);
+                $file->move($path, $thumbnail);
+                /* Renaming Edits Ends*/
+            }
+    }else{
+        $thumbnail = $request->pro_img_cheat;
+    }
+
+
+
+    if(isset($request->image_one)){
+        $fileSize = $request->file('image_one')->getSize();
+            if($fileSize>=1800000){
+            Session::flash('message', "File Exceeded the maximum allowed Size");
+            Session::flash('messageError', "An error occured, You may have exceeded the maximum size for an image you uploaded");
+            return Redirect::back();
+            }else{
+
+                $file = $request->file('image_one');
+                /** Renaming Edits */
+                $extension = $file->getClientOriginalExtension();
+                $image_main_temp = $request->name.'-001.'.$extension;
+                $image_one = str_replace(' ', '-',$image_main_temp);
+                $file->move($path, $image_one);
+                /* Renaming Edits Ends*/
+            }
+    }else{
+        $image_one = $request->pro_img_cheat;
+    }
+
+    if(isset($request->image_two)){
+        $fileSize = $request->file('image_two')->getSize();
+         if($fileSize>=1800000){
+            Session::flash('message', "File Exceeded the maximum allowed Size");
+            Session::flash('messageError', "An error occured, You may have exceeded the maximum size for an image you uploaded");
+
+         }else{
+
+             $file = $request->file('image_two');
+             /** Renaming Edits */
+             $extension = $file->getClientOriginalExtension();
+             $image_main_temp = $request->name.'-002.'.$extension;
+             $image_two = str_replace(' ', '-',$image_main_temp);
+             $file->move($path, $image_two);
+             /* Renaming Edits Ends*/
+         }
+    }else{
+        $image_two = $request->pro_img_cheat;
+    }
+
+
+    if(isset($request->image_three)){
+        $fileSize = $request->file('image_three')->getSize();
+        if($fileSize>=1800000){
+           Session::flash('message', "File Exceeded the maximum allowed Size");
+           Session::flash('messageError', "An error occured, You may have exceeded the maximum size for an image you uploaded");
+
+        }else{
+
+            $file = $request->file('image_three');
+             /** Renaming Edits */
+             $extension = $file->getClientOriginalExtension();
+             $image_main_temp = $request->name.'-003.'.$extension;
+             $image_three = str_replace(' ', '-',$image_main_temp);
+             $file->move($path, $image_three);
+             /* Renaming Edits Ends*/
+        }
+    }else{
+        $image_three = $request->pro_img_cheat;
+    }
+    //Additional images
+
+    $slung = Str::slug($request->name);
+    $Product = new Product;
+    $Product->name = $request->name;
+    $Product->google_product_category = $request->google_product_category;
+    $Product->slung = $slung;
+    $Product->iframe = $request->iframe;
+    $Product->tag = $request->tags;
+    $Product->meta = $request->meta;
+    $Product->content = $request->content;
+    $Product->price = $request->price;
+    $Product->brand = $request->brand;
+    $Product->price_raw = $request->price;
+    $Product->code = $request->code;
+    $Product->cat = $request->cat;
+    $Product->sub_cat = $request->sub_cat;
+    $Product->image_one = $image_one;
+    $Product->fb_pixels = $fb_pixels;
+
+    $Product->thumbnail = $thumbnail;
+
+    $Product->image_two = $image_two;
+    $Product->image_three = $image_three;
+
+    $Product->save();
+
+    Session::flash('message', "You have Added One New Product");
+    return Redirect::back();
+}
+
+public function Products(){
+    $Product = Product::all();
+    $page_title = 'list';
+    $page_name = 'All Products';
+    return view('admin.products',compact('page_title','Product','page_name'));
+}
+
+public function editProduct($id){
+    $Product = Product::find($id);
+    $page_title = 'formfiletext';
+    $page_name = 'Edit Product';
+    return view('admin.editProduct',compact('page_title','Product','page_name'));
+}
+
+public function edit_Product(Request $request, $id){
+    $path = 'uploads/product';
+
+    if(isset($request->fb_pixels)){
+        $fileSize = $request->file('fb_pixels')->getSize();
+        $file = $request->file('fb_pixels');
+        $filename = str_replace(' ', '-', $file->getClientOriginalName());
+        /** Renaming Edits */
+        $random = rand(100,1000);
+        $extension = $file->getClientOriginalExtension();
+        $ProductName = str_replace(' ','-',$request->name);
+        $image_main_temp = $random.'-fb_pixels.'.$extension;
+        $fb_pixels = str_replace('  ', '-',$image_main_temp);
+        $file->move($path, $fb_pixels);
+        /* Renaming Edits Ends*/
+    }else{
+        $fb_pixels = $request->fb_pixels_cheat;
+    }
+
+    if(isset($request->thumbnail)){
+        $fileSize = $request->file('thumbnail')->getSize();
+            if($fileSize>=1800000){
+            Session::flash('message', "File Exceeded the maximum allowed Size");
+            Session::flash('messageError', "An error occured, You may have exceeded the maximum size for an image you uploaded");
+            return Redirect::back();
+            }else{
+
+                $file = $request->file('thumbnail');
+                /** Renaming Edits */
+                $extension = $file->getClientOriginalExtension();
+                $image_main_temp = $request->name.'-thumbnail.'.$extension;
+                $thumbnail = str_replace(' ', '-',$image_main_temp);
+                $file->move($path, $thumbnail);
+                /* Renaming Edits Ends*/
+            }
+    }else{
+        $thumbnail = $request->thumbnail_cheat;
+    }
+
+
+    if(isset($request->image_one)){
+        $fileSize = $request->file('image_one')->getSize();
+            if($fileSize>=1800000){
+            Session::flash('message', "File Exceeded the maximum allowed Size");
+            Session::flash('messageError', "An error occured, You may have exceeded the maximum size for an image you uploaded");
+            return Redirect::back();
+            }else{
+                $file = $request->file('image_one');
+                /** Renaming Edits */
+                $extension = $file->getClientOriginalExtension();
+                $image_main_temp = $request->name.'-001.'.$extension;
+                $image_one = str_replace(' ', '-',$image_main_temp);
+                $file->move($path, $image_one);
+                /* Renaming Edits Ends*/
+
+
+            }
+    }else{
+        $image_one = $request->image_one_cheat;
+    }
+
+    if(isset($request->image_two)){
+        $fileSize = $request->file('image_two')->getSize();
+         if($fileSize>=1800000){
+            Session::flash('message_image_two', "File Exceeded the maximum allowed Size");
+            Session::flash('messageError', "An error occured, You may have exceeded the maximum size for an image you uploaded");
+
+         }else{
+
+            $file = $request->file('image_two');
+            /** Renaming Edits */
+            $extension = $file->getClientOriginalExtension();
+            $image_main_temp = $request->name.'-002.'.$extension;
+            $image_twoRaw = str_replace(' ', '-',$image_main_temp);
+            $image_two = str_replace('&', 'and',$image_twoRaw);
+            $file->move($path, $image_two);
+            /* Renaming Edits Ends*/
+
+
+         }
+    }else{
+        $image_two = $request->image_two_cheat;
+    }
+
+
+    if(isset($request->image_three)){
+        $fileSize = $request->file('image_three')->getSize();
+        if($fileSize>=1800000){
+           Session::flash('message_image_three', "File Exceeded the maximum allowed Size");
+           Session::flash('messageError', "An error occured, You may have exceeded the maximum size for an image you uploaded");
+
+        }else{
+
+            $file = $request->file('image_three');
+            /** Renaming Edits */
+            $extension = $file->getClientOriginalExtension();
+            $image_main_temp = $request->name.'-003.'.$extension;
+            $image_three = str_replace(' ', '-',$image_main_temp);
+            $file->move($path, $image_three);
+            /* Renaming Edits Ends*/
+
+        }
+    }else{
+        $image_three = $request->image_three_cheat;
+    }
+    //Additional images
+
+   if($request->stock == 'on'){
+       $stock = 'In Stock';
+   }else{
+       $stock = 'Out of Stock';
+   }
+   $slung = Str::slug($request->name);
+
+
+   $replaced = $request->replaced;
+
+
+
+
+
+    $updateDetails = array(
+        'name' => $request->name,
+        'slung' => $slung,
+        'replaced' => $request->replaced,
+        'meta' => $request->meta,
+        'google_product_category'=>$request->google_product_category,
+        'iframe' => $request->iframe,
+        'content' => $request->content,
+        'image_one' =>$image_one,
+        'thumbnail' =>$thumbnail,
+        'stock' => $stock,
+        'brand' =>$request->brand,
+        'fb_pixels' =>$fb_pixels,
+        'image_two' =>$image_two,
+        'image_three' =>$image_three,
+        'price' =>$request->price,
+        'price_raw' =>$request->price_raw,
+        'code' =>$request->code,
+        'cat' =>$request->cat,
+        'tag' =>$request->tag,
+        'sub_cat' =>$request->sub_cat,
+    );
+
+    DB::table('product')->where('id',$id)->update($updateDetails);
+    Session::flash('message', "Changes have been saved");
+    return Redirect::back();
+}
+
+public function deleteProduct($id){
+    DB::table('product')->where('id',$id)->delete();
+    return Redirect::back();
+}
 
 
 }
