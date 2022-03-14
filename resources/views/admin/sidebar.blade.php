@@ -73,6 +73,33 @@
             </li>
             {{--  --}}
 
+             {{--  --}}
+             <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-folder" aria-hidden="true"></i> Sub Categories </a>
+                <div class="collapsible-body left-sub-menu">
+                    <ul>
+                        <li><a href="{{url('/')}}/admin/addSubCategory">Add Sub Category</a>
+                        </li>
+
+                        <li><a href="{{url('/')}}/admin/subCategories">All  Sub Categories </a>
+                        </li>
+
+                        <li><a href="{{url('/')}}/admin/subCategories/web">Web  Categories </a>
+                        </li>
+
+                        {{--  --}}
+                        <li><a href="{{url('/')}}/admin/subCategories/homes">Real Estate Categories </a>
+                        </li>
+
+                        {{--  --}}
+                        <li><a href="{{url('/')}}/admin/subCategories/shop">Ecommerce Categories </a>
+                        </li>
+
+                        {{--  --}}
+                    </ul>
+                </div>
+            </li>
+            {{--  --}}
+
             {{--  --}}
             <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-folder" aria-hidden="true"></i> Services </a>
                 <div class="collapsible-body left-sub-menu">

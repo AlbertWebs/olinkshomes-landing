@@ -186,6 +186,16 @@ Route::get('admin/addProduct',  [AdminsController::class, 'addProduct'])->middle
 Route::post('admin/add_Product',  [AdminsController::class, 'add_Product'])->middleware('is_admin');
 
 
+//Sub Categories
+Route::get('admin/subCategories', [AdminsController::class, 'subCategories'])->middleware('is_admin');
+Route::get('admin/subCategories/{identifiers}', [AdminsController::class, 'subCategories'])->middleware('is_admin');
+Route::get('admin/editSubCategories/{id}', [AdminsController::class, 'editSubCategories'])->middleware('is_admin');
+Route::get('admin/deleteSubCategory/{id}', [AdminsController::class, 'deleteSubCategory'])->middleware('is_admin');
+Route::post('admin/edit_SubCategory/{id}',  [AdminsController::class, 'edit_SubCategory'])->middleware('is_admin');
+Route::get('admin/addSubCategory',  [AdminsController::class, 'addSubCategory'])->middleware('is_admin');
+Route::post('admin/add_SubCategory',  [AdminsController::class, 'add_SubCategory'])->middleware('is_admin');
+
+
 
 Route::get('admin/activitylogs', [AdminsController::class, 'activitylogs'])->middleware('is_admin');
 
@@ -193,6 +203,7 @@ Route::get('admin/activitylogs', [AdminsController::class, 'activitylogs'])->mid
 
 // AJAX REQUESTS
 Route::post('admin/addCategoryAjaxRequest', [AdminsController::class, 'addCategoryAjaxRequest'])->middleware('is_admin');
+Route::post('admin/deleteSubCategoryAjax', [AdminsController::class, 'deleteSubCategoryAjax'])->middleware('is_admin');
 Route::post('admin/deleteBlogAjax', [AdminsController::class, 'deleteBlogAjax'])->middleware('is_admin');
 Route::put('admin/updateSiteSettingsAjax', [AdminsController::class, 'updateSiteSettingsAjax'])->middleware('is_admin');
 Route::put('admin/updateMailerAjax', [AdminsController::class, 'updateMailerAjax'])->middleware('is_admin');

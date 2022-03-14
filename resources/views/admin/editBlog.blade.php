@@ -18,7 +18,7 @@
         @include('admin.sidebar')
 
         <!--== BODY INNER CONTAINER ==-->
-        
+
         <div class="sb2-2">
             <div class="sb2-2-2">
                 <ul>
@@ -29,7 +29,7 @@
                     <li class="page-back"><a href="{{url('/')}}/admin/home"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
                     </li>
                 </ul>
-               
+
             </div>
             <div class="sb2-2-add-blog sb2-2-1">
                 <div class="box-inn-sp">
@@ -40,7 +40,7 @@
                             @if(Session::has('message'))
                                           <div class="alert alert-success">{{ Session::get('message') }}</div>
                            @endif
-           
+
                            @if(Session::has('messageError'))
                                           <div class="alert alert-danger">{{ Session::get('messageError') }}</div>
                            @endif
@@ -55,15 +55,15 @@
                                     <label for="list-title">Post Title</label>
                                 </div>
                             </div>
-                       
+
                             <div class="row">
-                             
+
                                 {{--  --}}
                                 <div class="input-field col s12">
                                     <select required name="category" class="icons" id="mydiv">
                                         <?php $CategorySelected = DB::table('categories')->where('id',$Blog->category)->get() ?>
                                         @foreach ($CategorySelected as $CatSel)
-                                        <option value="{{$CatSel->id}}" selected>{{$CatSel->title}}</option>                                        
+                                        <option value="{{$CatSel->id}}" selected>{{$CatSel->title}}</option>
                                         @endforeach
                                         @foreach ($Category as $Categories)
                                         <option value="{{$Categories->id}}" data-icon="{{url('/')}}/uploads/categories/{{$Categories->image}}" class="circle">{{$Categories->title}}</option>
@@ -103,7 +103,7 @@
                                     {{-- <label for="textarea1">Blog Descriptions:</label> --}}
                                 </div>
                             </div><br><br>
-                           
+
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input required autocomplete="off" value="{{Auth::user()->name }}" id="post-auth" name="author" type="text" class="validate">
@@ -172,13 +172,13 @@
                             </div>
                             <span class="text-danger">{{ $errors->first('file') }}</span>
 
-                            <video oncontextmenu="return false;" width="100%" height="320" controls controlsList="nodownload"> 
-                                <source src="{{url('/')}}/uploads/blogs/{{$Blog->video}}" type="video/mp4"> 
-                          </video> 
+                            <video oncontextmenu="return false;" width="100%" height="320" controls controlsList="nodownload">
+                                <source src="{{url('/')}}/uploads/blogs/{{$Blog->video}}" type="video/mp4">
+                          </video>
                             {{--  --}}
 
                             {{-- Images --}}
-                            
+
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input  type="submit" class="waves-effect waves-light btn-large" value="Save Changes">
@@ -219,13 +219,13 @@
                                     <input  type="submit" class="waves-effect waves-light btn-large" value="Submit">
                                 </div>
                             </div>
-                            
+
                             <div class="tab-inn" id="loading-bar">
                                 <div class="progress">
                                     <div class="indeterminate"></div>
                                 </div>
                             </div>
-                            
+
                         </form>
                     </div>
                 </div>
@@ -240,10 +240,10 @@
     $('#categoryAddForm').on('submit',function(event){
         event.preventDefault();
         $('#loading-bar').show();
-   
+
 
         let title = $('#CategoryTitle').val();
-       
+
 
         $.ajax({
           url: "{{url('/')}}/admin/addCategoryAjaxRequest",
@@ -272,32 +272,32 @@
                 });
 
                 $('.btn-file :file').on('fileselect', function(event, label) {
-                    
+
                     var input = $(this).parents('.input-group').find(':text'),
                         log = label;
-                    
+
                     if( input.length ) {
                         input.val(log);
                     } else {
                         if( log ) alert(log);
                     }
-                
+
                 });
                 function readURL(input) {
                     if (input.files && input.files[0]) {
                         var reader = new FileReader();
-                        
+
                         reader.onload = function (e) {
                             $('#img-upload').attr('src', e.target.result);
                         }
-                        
+
                         reader.readAsDataURL(input.files[0]);
                     }
                 }
 
                 $("#imgInp").change(function(){
                     readURL(this);
-                }); 	
+                });
             });
         </script>
 </div>

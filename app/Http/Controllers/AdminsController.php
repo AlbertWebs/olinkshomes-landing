@@ -27,6 +27,8 @@ use App\Models\Banner;
 
 use App\Models\Message;
 
+use App\Models\Sub_Category;
+
 use App\Models\Category;
 
 use App\Models\Testimonial;
@@ -1185,470 +1187,6 @@ class AdminsController extends Controller
         return Redirect::back();
     }
 
-    // Add Course
-    public function addCourse(){
-        activity()->log('Access The Add How Its Works Page');
-        $Category = DB::table('categories')->orderBy('id','DESC')->get();
-        $page_name = 'Add How It Works';
-        $page_title = 'formfiletext';//For Style Inheritance
-        return view('admin.addCourse',compact('page_title','page_name','Category'));
-    }
-
-    public function add_Course(Request $request){
-        activity()->log('Evoked Add Course');
-        $path = 'uploads/courses';
-        if(isset($request->image)){
-                $file = $request->file('image');
-                $filename = str_replace(' ', '', $file->getClientOriginalName());
-                $timestamp = new Datetime();
-                $new_timestamp = $timestamp->format('Y-m-d H:i:s');
-                $image_main_temp = $new_timestamp.'image'.$filename;
-                $image = str_replace(' ', '',$image_main_temp);
-                $file->move($path, $image);
-        }else{
-            $image = '0';
-        }
-
-        if(isset($request->icon)){
-            $file = $request->file('icon');
-            $filename = str_replace(' ', '', $file->getClientOriginalName());
-            $timestamp = new Datetime();
-            $new_timestamp = $timestamp->format('Y-m-d H:i:s');
-            $image_main_temp = $new_timestamp.'icon'.$filename;
-            $icon = str_replace(' ', '',$image_main_temp);
-            $file->move($path, $icon);
-        }else{
-            $icon = '0';
-        }
-
-        $Course = new Course;
-        $Course->title = $request->title;
-        $Course->price = $request->price;
-        $Course->slung = Str::slug($request->title);
-        $Course->content = $request->content;
-        $Course->meta = $request->meta;
-        $Course->icon = $icon;
-        $Course->image = $image;
-        $Course->save();
-        Session::flash('message', "Content Has been Added");
-        return Redirect::back();
-    }
-
-    public function courses(){
-        activity()->log('Accessed All Courses Page');
-        $Course = Course::All();
-        $page_name = 'All Courses';
-        $page_title = 'list';
-        return view('admin.courses',compact('page_title','Course','page_name'));
-    }
-
-    public function editCourse($id){
-        activity()->log('Accessed Course Edit ID number '.$id.' ');
-        $Category = DB::table('courses')->orderBy('id','DESC')->get();
-        $Course = Course::find($id);
-        $page_name = $Course->title;
-        $page_title = 'formfiletext';//For Style Inheritance
-        return view('admin.editCourse')->with('Course',$Course)->with('page_name',$page_name)->with('Category',$Category)->with('page_title',$page_title);
-    }
-
-    public function edit_Course(Request $request, $id){
-        $path = 'uploads/courses';
-        if(isset($request->image)){
-            $file = $request->file('image');
-            $filename = str_replace(' ', '', $file->getClientOriginalName());
-            $timestamp = new Datetime();
-            $new_timestamp = $timestamp->format('Y-m-d H:i:s');
-            $image_main_temp = $new_timestamp.'image'.$filename;
-            $image = str_replace(' ', '',$image_main_temp);
-            $file->move($path, $image);
-        }else{
-            $image = $request->image_cheat;
-        }
-
-        if(isset($request->icon)){
-            $file = $request->file('icon');
-            $filename = str_replace(' ', '', $file->getClientOriginalName());
-            $timestamp = new Datetime();
-            $new_timestamp = $timestamp->format('Y-m-d H:i:s');
-            $image_main_temp = $new_timestamp.'icon'.$filename;
-            $icon = str_replace(' ', '',$image_main_temp);
-            $file->move($path, $icon);
-        }else{
-            $icon = $request->icon_cheat;
-        }
-
-        activity()->log('Edited Course ID number '.$id.' ');
-        $updateDetails = array(
-            'title'=>$request->title,
-            'slung' => Str::slug($request->title),
-            'content' =>$request->content,
-            'meta' =>$request->meta,
-            'price' =>$request->price,
-            'meta' =>$request->meta,
-            'icon' =>$icon,
-            'image' =>$image,
-        );
-        DB::table('courses')->where('id',$id)->update($updateDetails);
-        Session::flash('message', "Changes have been saved");
-            return Redirect::back();
-    }
-
-    public function delete_Course($id){
-        activity()->log('Deleted Course ID number '.$id.' ');
-        DB::table('courses')->where('id',$id)->delete();
-        return Redirect::back();
-    }
-
-    // Add Topic
-    public function addTopic(){
-        $Course = Course::all();
-        activity()->log('Access The Add Topics');
-        $Category = DB::table('categories')->orderBy('id','DESC')->get();
-        $page_name = 'Add How It Works';
-        $page_title = 'formfiletext';//For Style Inheritance
-        return view('admin.addTopic',compact('page_title','page_name','Course'));
-    }
-
-
-    public function add_Topic(Request $request){
-
-
-        activity()->log('Evoked Add Topic');
-        $path = 'uploads/topics';
-        if(isset($request->image)){
-                $file = $request->file('image');
-                $filename = str_replace(' ', '', $file->getClientOriginalName());
-                $timestamp = new Datetime();
-                $new_timestamp = $timestamp->format('Y-m-d H:i:s');
-                $image_main_temp = $new_timestamp.'image'.$filename;
-                $image = str_replace(' ', '',$image_main_temp);
-                $file->move($path, $image);
-        }else{
-            $image = 'Thumbnail.png';
-        }
-
-
-
-        if(isset($request->file)){
-            // if(Request::hasFile('file')){
-                $path = 'uploads/videos';
-                $file = $request->file('file');
-                $filename = $file->getClientOriginalName();
-                $path = $request->file('file')->storeAs('public/uploads/videos',$filename);
-
-                $ffprobe = FFMpeg\FFProbe::create();
-                $media = FFMpeg::open('public/uploads/videos/'.$filename.'');
-                $durationInSeconds = $media->getDurationInSeconds(); // returns an int
-                $durationInMiliseconds = $media->getDurationInMiliseconds(); // returns a float
-                //in seconds
-                if($durationInSeconds>=60){
-                    $duration = $durationInSeconds/60;
-                    $whole = number_format($duration);
-                    $remainer = $duration - floor($duration);
-                    $i = $whole;
-                    $s = $remainer*60;
-
-
-                    if($s<10){
-                        $duration= "$i:0$s";
-                    }else{
-                        $duration= "$i:$s";
-                    }
-
-
-                }else{
-                    $duration = $durationInSeconds/60;
-                    $remainer = $duration - floor($duration);
-                    $i = "00";
-                    $s = $durationInSeconds;
-                        if($s<10){
-                            $duration= "$i:0$s";
-                        }else{
-                            $duration= "$i:$s";
-                        }
-                }
-        }else{
-            $filename = $request->video_cheat;
-            $filename = $file->getClientOriginalName();
-            $path = $request->file('file')->storeAs('public/uploads/videos',$filename);
-
-            $ffprobe = FFMpeg\FFProbe::create();
-            $media = FFMpeg::open('public/uploads/videos/'.$filename.'');
-            $durationInSeconds = $media->getDurationInSeconds(); // returns an int
-            $durationInMiliseconds = $media->getDurationInMiliseconds(); // returns a float
-            //in seconds
-            if($durationInSeconds>=60){
-                $duration = $durationInSeconds/60;
-                $whole = number_format($duration);
-                $remainer = $duration - floor($duration);
-                $i = $whole;
-                $s = $remainer*60;
-
-
-                if($s<10){
-                    $duration= "$i:0$s";
-                }else{
-                    $duration= "$i:$s";
-                }
-
-
-            }else{
-                $duration = $durationInSeconds/60;
-                $remainer = $duration - floor($duration);
-                $i = "00";
-                $s = $durationInSeconds;
-                    if($s<10){
-                        $duration= "$i:0$s";
-                    }else{
-                        $duration= "$i:$s";
-                    }
-            }
-
-        }
-
-
-
-        if($request->bonus == 'on'){
-            $is_bonus = 1;
-         }else{
-             $is_bonus = 0;
-         }
-
-         $OriginalFileName = $filename;
-         // Remove .mp4
-         $withoutExt = preg_replace('/\\.[^.\\s]{3,4}$/', '', $OriginalFileName);
-        $encrypted = Crypt::encryptString(Str::slug($request->title));
-
-        $Topic = new Topic;
-        $Topic->course_id = $request->course_id;
-        $Topic->title = $withoutExt;
-        $Topic->slung = Str::slug($request->title);
-        $Topic->content = $request->content;
-        $Topic->is_bonus = $is_bonus;
-        $Topic->video_encryption = $encrypted;
-        $Topic->meta = $request->meta;
-        $Topic->placeholder = $image;
-        $Topic->video = $filename;
-        $Topic->video_views = $request->video_views;
-        $Topic->video_duration = $duration;
-
-        $Topic->save();
-        Session::flash('message', "Content Has been Added");
-        return Redirect::back();
-    }
-
-    public function topics(){
-        activity()->log('Accessed All Topics Page');
-        $Topic = Topic::All();
-        $page_name = 'All Topics';
-        $page_title = 'list';
-        return view('admin.topics',compact('page_title','Topic','page_name'));
-    }
-
-    public function editTopic($id){
-        activity()->log('Accessed Topic Edit ID number '.$id.' ');
-        $Course = Course::all();
-        $Category = DB::table('topics')->orderBy('id','DESC')->get();
-        $Topic = Topic::find($id);
-        $page_name = $Topic->title;
-        $page_title = 'formfiletext';//For Style Inheritance
-        return view('admin.editTopic')->with('Topic',$Topic)->with('page_name',$page_name)->with('Course',$Course)->with('page_title',$page_title);
-    }
-
-    public function edit_Topic(Request $request, $id){
-        $path = 'uploads/topics';
-        if(isset($request->image)){
-            $file = $request->file('image');
-            $filename = str_replace(' ', '', $file->getClientOriginalName());
-            $timestamp = new Datetime();
-            $new_timestamp = $timestamp->format('Y-m-d H:i:s');
-            $image_main_temp = $new_timestamp.'image'.$filename;
-            $image = str_replace(' ', '',$image_main_temp);
-            $file->move($path, $image);
-        }else{
-            $image = "Thumbnail1.png";
-        }
-
-        if(isset($request->file)){
-        // if(Request::hasFile('file')){
-            $path = 'uploads/videos';
-            $file = $request->file('file');
-            $filename = $file->getClientOriginalName();
-            $path = $request->file('file')->storeAs('public/uploads/videos',$filename);
-
-            $ffprobe = FFMpeg\FFProbe::create();
-            $media = FFMpeg::open('public/uploads/videos/'.$filename.'');
-            $durationInSeconds = $media->getDurationInSeconds(); // returns an int
-            $durationInMiliseconds = $media->getDurationInMiliseconds(); // returns a float
-            //in seconds
-            if($durationInSeconds>=60){
-                $duration = $durationInSeconds/60;
-                $whole = number_format($duration);
-                $remainer = $duration - floor($duration);
-                $i = $whole;
-                $s = $remainer*60;
-
-
-                if($s<10){
-                    $duration= "$i:0$s";
-                }else{
-                    $duration= "$i:$s";
-                }
-
-
-            }else{
-                $duration = $durationInSeconds/60;
-                $remainer = $duration - floor($duration);
-                $i = "00";
-                $s = $durationInSeconds;
-                    if($s<10){
-                        $duration= "$i:0$s";
-                    }else{
-                        $duration= "$i:$s";
-                    }
-            }
-        }else{
-            $filename = $request->video_cheat;
-
-
-            $ffprobe = FFMpeg\FFProbe::create();
-            $media = FFMpeg::open('public/uploads/videos/'.$filename.'');
-            $durationInSeconds = $media->getDurationInSeconds(); // returns an int
-            $durationInMiliseconds = $media->getDurationInMiliseconds(); // returns a float
-            //in seconds
-            if($durationInSeconds>=60){
-                $duration = $durationInSeconds/60;
-                $whole = number_format($duration);
-                $remainer = $duration - floor($duration);
-                $i = $whole;
-                $s = $remainer*60;
-
-
-                if($s<10){
-                    $duration= "$i:0$s";
-                }else{
-                    $duration= "$i:$s";
-                }
-
-
-            }else{
-                $duration = $durationInSeconds/60;
-                $remainer = $duration - floor($duration);
-                $i = "00";
-                $s = $durationInSeconds;
-                    if($s<10){
-                        $duration= "$i:0$s";
-                    }else{
-                        $duration= "$i:$s";
-                    }
-            }
-
-        }
-
-
-        if($request->bonus == 'on'){
-            $is_bonus = 1;
-         }else{
-             $is_bonus = 0;
-         }
-
-        $OriginalFileName = $filename;
-        // Remove .mp4
-        $withoutExt = preg_replace('/\\.[^.\\s]{3,4}$/', '', $OriginalFileName);
-
-
-        $encrypted = Crypt::encryptString(Str::slug($request->title));
-        activity()->log('Edited Topic ID number '.$id.' ');
-        $updateDetails = array(
-            'title'=>$withoutExt,
-            'course_id'=>$request->course_id,
-            'slung' => Str::slug($request->title),
-            'content' =>$request->content,
-            'video_encryption' =>$encrypted,
-            'meta' =>$request->meta,
-            'is_bonus' =>$is_bonus,
-            'placeholder' =>$image,
-            'video' =>$filename,
-            'video_views' =>$request->video_views,
-            'video_duration' =>$duration,
-        );
-        DB::table('topics')->where('id',$id)->update($updateDetails);
-        Session::flash('message', "Changes have been saved");
-            return Redirect::back();
-    }
-
-
-    public function delete_Topic($id){
-        activity()->log('Deleted Topic ID number '.$id.' ');
-        DB::table('topics')->where('id',$id)->delete();
-        return Redirect::back();
-    }
-
-    public function addSignal(){
-        activity()->log('Accessed Add Signal Page');
-        $page_title = 'formfiletext';//For Layout Inheritance
-        $page_name = 'add Signal';
-        return view('admin.addSignal',compact('page_title','page_name'));
-    }
-
-    public function add_Signal(Request $request){
-        activity()->log('Evoked an add Signal Operation');
-
-        $Signal = new Signal;
-        $Signal->currency_pair = $request->currency_pair;
-        $Signal->datetime = $request->datetime;
-        $Signal->position = $request->position;
-        $Signal->tp = $request->tp;
-        $Signal->sl = $request->sl;
-        $Signal->comments = $request->comments;
-        $Signal->save();
-        Session::flash('message', "Post Saved Successfully");
-        return Redirect::back();
-
-    }
-
-
-    public function signals(){
-        activity()->log('Accessed the all signals page ');
-        $Signal = Signal::all();
-        $page_title = 'list';
-        $page_name = 'Signal';
-        return view('admin.signals',compact('page_title','Signal','page_name'));
-    }
-
-    public function editSignal($id){
-        activity()->log('Accessed Edit Signal For Signal ID number '.$id.' ');
-        $Signal = Signal::find($id);
-        $page_title = 'formfiletext';
-        $page_name = 'Edit Signal';
-        return view('admin.editSignal',compact('page_title','Signal','page_name'));
-    }
-
-
-    public function edit_Signal(Request $request, $id){
-        activity()->log('Evoked an Edit Signal Operation For Signal ID number '.$id.' ');
-
-        $updateDetails = array(
-            'currency_pair' => $request->currency_pair,
-            'datetime' => $request->datetime,
-            'position' => $request->position,
-            'tp' => $request->tp,
-            'sl' => $request->sl,
-            'comments' => $request->comments,
-        );
-        DB::table('signals')->where('id',$id)->update($updateDetails);
-        Session::flash('message', "Changes have been saved");
-        return Redirect::back();
-    }
-
-
-    public function delete_Signal($id){
-        activity()->log('Deleted Signal With ID number '.$id.' ');
-        DB::table('signals')->where('id',$id)->delete();
-        Session::flash('message', "Post Deleted Successfully");
-        return Redirect::back();
-    }
-
     public function approve_transaction($id){
         activity()->log('Approve Transaction '.$id.' ');
         $GetPayments = DB::table('mobile_payments')->where('transLoID',$id)->get();
@@ -1774,6 +1312,15 @@ class AdminsController extends Controller
         DB::table('categories')->where('id',$id)->delete();
         return response()->json(['success'=>'Deleted Successfully!']);
     }
+
+    public function deleteSubCategoryAjax(Request $request){
+        activity()->log('Evoked a delete SubCategorgy Request');
+        $id = $request->id;
+        DB::table('sub_category')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+
 
     public function deleteBlogAjax(Request $request){
         activity()->log('Evoked a delete Blog Request');
@@ -2317,6 +1864,81 @@ public function edit_Product(Request $request, $id){
 
 public function deleteProduct($id){
     DB::table('product')->where('id',$id)->delete();
+    return Redirect::back();
+}
+
+public function subCategories(){
+    $Category = Sub_Category::all();
+    $page_title = 'list';
+    $page_name = 'Categories';
+    return view('admin.SubCategories',compact('page_title','Category','page_name'));
+}
+
+public function addSubCategory(){
+    $page_title = 'formfiletext';
+    $Category = DB::table('categories')->orderBy('id','DESC')->get();
+    $page_name = 'Add Category';
+    return view('admin.addSubCategory',compact('page_title','page_name','Category'));
+}
+
+public function add_SubCategory(Request $request){
+    //Do Images
+    $path = 'uploads/categories';
+    if(isset($request->image)){
+        $file = $request->file('image');
+        $filename = $file->getClientOriginalName();
+        $file->move($path, $filename);
+        $image = $filename;
+    }else{
+        $image = "0";
+    }
+    //
+    $slung = Str::slug($request->name);
+    $SubCategory = new Sub_Category;
+    $SubCategory->name = $request->title;
+    $SubCategory->images = $image;
+    $SubCategory->identifier = $request->identifier;
+    $SubCategory->slung = $slung;
+    $SubCategory->cat_id = $request->category;
+
+    $SubCategory->save();
+    Session::flash('message', "Category Has Been Added");
+    return Redirect::back();
+}
+
+public function editSubCategories($id){
+    $Category = Sub_Category::find($id);
+    $page_title = 'formfiletext';
+    $page_name = 'Edit Home Page Slider';
+    return view('admin.editSubCategory',compact('page_title','Category','page_name'));
+}
+
+public function edit_SubCategory(Request $request, $id){
+    $path = 'uploads/categories';
+    if(isset($request->image)){
+        $file = $request->file('image');
+        $filename = $file->getClientOriginalName();
+        $file->move($path, $filename);
+        $image = $filename;
+    }else{
+        $image = $request->image_cheat;
+    }
+    $slung = Str::slug($request->name);
+    $updateDetails = array(
+        'cat_id'=>$request->cat_id,
+        'identifier'=>$request->identifier,
+        'image'=>$image,
+        'slung'=>$slung,
+        'name' =>$request->name,
+
+    );
+    DB::table('sub_category')->where('id',$id)->update($updateDetails);
+    Session::flash('message', "Changes have been saved");
+    return Redirect::back();
+}
+
+public function deleteSubCategory($id){
+    DB::table('sub_category')->where('id',$id)->delete();
     return Redirect::back();
 }
 
