@@ -81,7 +81,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-12">
+                    {{-- <div class="col-md-12">
                         <div class="box-inn-sp">
                             <div class="inn-title">
                                 <h4> Notifications </h4>
@@ -187,7 +187,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 

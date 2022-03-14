@@ -14,7 +14,7 @@
                 <div class="ad-hom-box ad-hom-box-2">
                     <span class="ad-hom-col-com ad-hom-col-2"><i class="fa fa-usd"></i></span>
                     <div class="ad-hom-view-com">
-                    <p><i class="fa  fa-arrow-up up"></i> Earnings</p>
+                    <p><i class="fa  fa-arrow-up up"></i> Orders</p>
                     <h3>22,520</h3>
                     </div>
                 </div>

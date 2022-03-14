@@ -50,10 +50,21 @@
             <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-folder" aria-hidden="true"></i> Categories </a>
                 <div class="collapsible-body left-sub-menu">
                     <ul>
-                        <li><a href="{{url('/')}}/admin/categories">All Category </a>
+                        <li><a href="{{url('/')}}/admin/categories">Main Categories </a>
                         </li>
-                        <li><a href="{{url('/')}}/admin/addCategory">Add Category</a>
+                        <li><a href="{{url('/')}}/admin/addCategory">Add Landing Category</a>
                         </li>
+                        {{--  --}}
+                        <li><a href="{{url('/')}}/admin/categories">Real Estate Categories </a>
+                        </li>
+                        <li><a href="{{url('/')}}/admin/addCategory">Add Real Estate Category</a>
+                        </li>
+                        {{--  --}}
+                        <li><a href="{{url('/')}}/admin/categories">Ecommerce Categories </a>
+                        </li>
+                        <li><a href="{{url('/')}}/admin/addCategory">Add Ecommerce Category</a>
+                        </li>
+                        {{--  --}}
                     </ul>
                 </div>
             </li>
@@ -74,42 +85,35 @@
 
              {{--  --}}
              <li><a href="{{url('/')}}/admin/enroll-users" class="collapsible-header"><i class="fa fa-registered " aria-hidden="true"></i> Enroll Users </a>
-                
+
             </li>
             {{--  --}}
 
             {{--  --}}
-            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Academia </a>
+            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-home" aria-hidden="true"></i> Real Estate </a>
                 <div class="collapsible-body left-sub-menu">
                     <ul>
-                        <li><a href="{{url('/')}}/admin/courses">All Courses </a>
+                        <li><a href="{{url('/')}}/admin/homes">All Homes </a>
                         </li>
-                        <li><a href="{{url('/')}}/admin/addCourse">Add Course </a>
-                        </li>
-                        <li><a href="{{url('/')}}/admin/topics">All Topics </a>
-                        </li>
-                        <li><a href="{{url('/')}}/admin/addTopic">Add Topic </a>
+                        <li><a href="{{url('/')}}/admin/addHome">Add Home </a>
                         </li>
                     </ul>
                 </div>
             </li>
             {{--  --}}
 
-                     {{--  --}}
-                     <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-bar-chart" aria-hidden="true"></i> Signals </a>
-                        <div class="collapsible-body left-sub-menu">
-                            <ul>
-                                <li><a href="{{url('/')}}/admin/signals">All Signals </a>
-                                </li>
-                                <li><a href="{{url('/')}}/admin/addSignal">Add Signal </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    {{--  --}}
-            
+             {{--  --}}
+             <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-shopping-cart" aria-hidden="true"></i> E-Commerce </a>
+                <div class="collapsible-body left-sub-menu">
+                    <ul>
+                        <li><a href="{{url('/')}}/admin/homes">All Products </a>
+                        </li>
+                        <li><a href="{{url('/')}}/admin/addHome">Add Product </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
 
-            {{--  --}}
             <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-ticket" aria-hidden="true"></i> Payments</a>
                 <div class="collapsible-body left-sub-menu">
                     <ul>
@@ -138,14 +142,14 @@
                         <li>
                             <a style="color:#000000 !important; font-weight:600" href="{{url('/')}}" class="collapsible-header"><i class="fa fa-paypal" aria-hidden="true"></i>Paypal Payments</a>
                             <div class="left-sub-menu">
-                            
+
                             </div>
                         </li>
 
                         <li>
                             <a style="color:#000000 !important; font-weight:600" href="{{url('/')}}" class="collapsible-header"><i class="fa fa-btc" aria-hidden="true"></i>Crypto Payments</a>
                             <div class="left-sub-menu">
-                            
+
                             </div>
                         </li>
                     </ul>
@@ -161,7 +165,7 @@
                         </li>
                         <li><a href="{{url('/')}}/admin/admins">Manage Admins</a>
                         </li>
-                  
+
                     </ul>
                 </div>
             </li>
@@ -173,8 +177,8 @@
                         </li>
                         <li><a href="{{url('/')}}/admin/how">How It Works</a>
                         </li>
-                       
-                  
+
+
                     </ul>
                 </div>
             </li>
@@ -191,12 +195,12 @@
                         </li>
                         <li><a href="{{url('/')}}/admin/editCopyright"> Copyright Statement</a>
                         </li>
-                  
+
                     </ul>
                 </div>
             </li>
 
-            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-rss" aria-hidden="true"></i> Blog & Articals</a>
+            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-rss" aria-hidden="true"></i> Blog & Articles</a>
                 <div class="collapsible-body left-sub-menu">
                     <ul>
                         <li><a href="{{url('/')}}/admin/blog">All Blogs</a>
@@ -227,8 +231,8 @@
             <li><a href="{{url('/')}}/logout" target="_blank"><i class="fa fa-sign-in" aria-hidden="true"></i> Logout </a>
             </li>
 
-        
-       
+
+
         </ul>
     </div>
 </div>
