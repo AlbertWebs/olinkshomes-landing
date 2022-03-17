@@ -19,6 +19,8 @@
             </li>
             <li><a target="_blank" href="{{url('/')}}/" class="menu-active"><i class="fa fa-globe" aria-hidden="true"></i> Visit Website</a>
             </li>
+            <li><a target="_blank" href="{{url('/')}}/" class="menu-active"><i class="fa fa-phone" aria-hidden="true"></i> Dial a Fundi</a>
+            </li>
 
             {{--  --}}
             <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-file-image-o" aria-hidden="true"></i> Home Page Slider  </a>
@@ -151,7 +153,11 @@
                     <ul>
                         <li><a href="{{url('/')}}/admin/products">All Products </a>
                         </li>
+                        <li><a href="{{url('/')}}/admin/tags">All Tags </a>
+                        </li>
                         <li><a href="{{url('/')}}/admin/addProduct">Add Product </a>
+                        </li>
+                        <li><a href="{{url('/')}}/admin/addTag">Add Tags </a>
                         </li>
                     </ul>
                 </div>

@@ -24,7 +24,7 @@
                 <ul>
                     <li><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
                     </li>
-                    <li class="active-bre"><a href="#"> Add New Product</a>
+                    <li class="active-bre"><a href="#"> Edit {{$Product->name}}</a>
                     </li>
                     <li class="page-back"><a href="{{url('/')}}/admin/products"><i class="fa fa-backward" aria-hidden="true"></i> All Products</a>
                     </li>
@@ -32,7 +32,7 @@
 
             </div>
             <div class="sb2-2-add-blog sb2-2-1">
-                <h2>Add New Product</h2>
+                <h2>Edit {{$Product->name}}</h2>
                 <p>Products are listed on the E-commerce Website</p>
                 <center>
                     @if(Session::has('message'))
@@ -43,13 +43,15 @@
                                   <div class="alert alert-danger">{{ Session::get('messageError') }}</div>
                    @endif
                 </center>
-                <form method="POST" action="{{url('/')}}/admin/add_Product" enctype="multipart/form-data">
+                <form method="POST" action="{{url('/')}}/admin/edit_Product/{{$Product->id}}" enctype="multipart/form-data">
                     {{csrf_field()}}
                     {{-- Category, SubCategory, Tags --}}
                     <div class="row">
                         <div class="input-field col s12">
                             <select name="cat" id="cat" class="mdb-select">
-                                <option value="" disabled selected>Choose Category</option>
+
+                                <option value="{{$Product->cat}}"  selected><?php $Cats = DB::table('categories')->where('id',$Product->cat)->get(); ?>@foreach ($Cats as $cts){{$cts->title}}@endforeach</option>
+
                                 <?php $Category = DB::table('categories')->get(); ?>
                                 @foreach ($Category as $cat)
                                 <option value="{{$cat->id}}">{{$cat->title}}</option>
@@ -62,7 +64,7 @@
                     <div class="row">
                         <div class="input-field col s12" >
                             <select name="sub_cat" id="sub_cat" class="sub_cat mdb-select">
-                                {{-- <option value="" disabled="" selected="">Choose Sub Category</option> --}}
+                                <option value="{{$Product->sub_cat}}"  selected><?php $Cats = DB::table('sub_category')->where('id',$Product->id)->get(); ?>@foreach ($Cats as $cts){{$cts->name}}@endforeach</option>
 
                             </select>
                             <label>Select Sub Category</label>
@@ -72,7 +74,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <select name="tags" multiple class="mdb-select">
-                                <option value="" disabled selected>Choose Tags</option>
+                                <option value="{{$Product->tag}}"  selected><?php $Cats = DB::table('tags')->where('id',$Product->tag)->get(); ?>@foreach ($Cats as $cts){{$cts->title}}@endforeach</option>
                                 <?php $Tag = DB::table('tags')->get(); ?>
                                 @foreach ($Tag as $tag)
                                 <option value="{{$tag->id}}">{{$tag->title}}</option>
@@ -84,26 +86,26 @@
                     {{-- Category, SubCategory, Tags --}}
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="list-title" name="title" type="text" value="" class="validate">
+                            <input id="list-title" name="title" type="text" value="{{$Product->name}}" class="validate">
                             <label for="list-title">Enter Product Name</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="list-title" name="price" type="text" value="" class="validate">
+                            <input id="list-title" name="price" type="text" value="{{$Product->price}}" class="validate">
                             <label for="list-title">Enter Product Price eg 18500</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <textarea id="textarea1" name="meta" class="materialize-textarea validate"></textarea>
+                            <textarea id="textarea1" name="meta" class="materialize-textarea validate">{{$Product->meta}}</textarea>
                             <label for="list-title">Enter Product Meta Infomation</label>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <textarea required id="article-ckeditor" name="content" class="materialilze-textarea" placeholder="content"></textarea>
+                            <textarea required id="article-ckeditor" name="content" class="materialilze-textarea" placeholder="content">{{$Product->content}}</textarea>
                             {{-- <label for="textarea1">Blog Descriptions:</label> --}}
                         </div>
                     </div><br><br>
@@ -149,7 +151,7 @@
                                                 </span>
                                                 <input type="text" class="form-control" readonly>
                                             </div>
-                                            <img class="image-preview" style="width:auto;" src="" id='img-upload'/>
+                                            <img class="image-preview" style="width:auto;" src="{{url('/')}}/uploads/products/{{$Product->fb_pixels}}" id='img-upload'/>
                                         </div>
                                     </div>
                                 </div>
@@ -158,10 +160,11 @@
 
                             {{-- Images --}}
                             <br><br>
+                            <input type="hidden" name="fb_pixels_cheat" value="{{$Product->fb_pixels}}">
                             <div class="clearfix"></div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="submit" class="waves-effect waves-light btn-large" value="Add Product">
+                            <input type="submit" class="waves-effect waves-light btn-large" value="Save Changes">
                         </div>
                     </div>
                 </form>

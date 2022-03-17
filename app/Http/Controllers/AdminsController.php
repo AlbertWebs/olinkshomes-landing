@@ -19,6 +19,8 @@ use VideoThumbnail;
 
 use App\Models\How;
 
+use App\Models\Tag;
+
 use App\Models\Slider;
 
 use App\Models\User;
@@ -1306,6 +1308,22 @@ class AdminsController extends Controller
 
     }
 
+    public function deleteTagAjax(Request $request){
+        activity()->log('Evoked a delete Tag Request');
+        $id = $request->id;
+        DB::table('tags')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+    public function deleteProductAjax(Request $request){
+        activity()->log('Evoked a delete Product Request');
+        $id = $request->id;
+        DB::table('product')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+
+
     public function deleteCategoryAjax(Request $request){
         activity()->log('Evoked a delete Categorgy Request');
         $id = $request->id;
@@ -1320,7 +1338,12 @@ class AdminsController extends Controller
         return response()->json(['success'=>'Deleted Successfully!']);
     }
 
-
+    public function get_subcategories(Request $request,$id){
+        if ($request->ajax()) {
+            $data = Sub_Category::where('cat_id', $id)->get();
+            return response()->json($data);
+        }
+    }
 
     public function deleteBlogAjax(Request $request){
         activity()->log('Evoked a delete Blog Request');
@@ -1565,7 +1588,7 @@ public function addProduct(){
 
 public function add_Product(Request $request){
 
-    $path = 'uploads/product';
+    $path = 'uploads/products';
     if(isset($request->fb_pixels)){
         $fileSize = $request->file('fb_pixels')->getSize();
             if($fileSize>=1800000){
@@ -1672,7 +1695,7 @@ public function add_Product(Request $request){
 
     $slung = Str::slug($request->name);
     $Product = new Product;
-    $Product->name = $request->name;
+    $Product->name = $request->title;
     $Product->google_product_category = $request->google_product_category;
     $Product->slung = $slung;
     $Product->iframe = $request->iframe;
@@ -1714,7 +1737,7 @@ public function editProduct($id){
 }
 
 public function edit_Product(Request $request, $id){
-    $path = 'uploads/product';
+    $path = 'uploads/products';
 
     if(isset($request->fb_pixels)){
         $fileSize = $request->file('fb_pixels')->getSize();
@@ -1825,20 +1848,15 @@ public function edit_Product(Request $request, $id){
    }else{
        $stock = 'Out of Stock';
    }
-   $slung = Str::slug($request->name);
-
-
-   $replaced = $request->replaced;
-
-
-
+   $slung = Str::slug($request->title);
 
 
     $updateDetails = array(
-        'name' => $request->name,
+        'name' => $request->title,
         'slung' => $slung,
-        'replaced' => $request->replaced,
         'meta' => $request->meta,
+        'cat' => $request->cat,
+        'sub_cat' => $request->sub_cat,
         'google_product_category'=>$request->google_product_category,
         'iframe' => $request->iframe,
         'content' => $request->content,
@@ -1853,17 +1871,17 @@ public function edit_Product(Request $request, $id){
         'price_raw' =>$request->price_raw,
         'code' =>$request->code,
         'cat' =>$request->cat,
-        'tag' =>$request->tag,
+        'tag' =>$request->tags,
         'sub_cat' =>$request->sub_cat,
     );
 
-    DB::table('product')->where('id',$id)->update($updateDetails);
+    DB::table('products')->where('id',$id)->update($updateDetails);
     Session::flash('message', "Changes have been saved");
     return Redirect::back();
 }
 
 public function deleteProduct($id){
-    DB::table('product')->where('id',$id)->delete();
+    DB::table('products')->where('id',$id)->delete();
     return Redirect::back();
 }
 
@@ -1939,6 +1957,76 @@ public function edit_SubCategory(Request $request, $id){
 
 public function deleteSubCategory($id){
     DB::table('sub_category')->where('id',$id)->delete();
+    return Redirect::back();
+}
+
+//
+public function tags(){
+    $Tag = Tag::all();
+    $page_title = 'list';
+    $page_name = 'Categories';
+    return view('admin.tags',compact('page_title','Tag','page_name'));
+}
+
+public function addTag(){
+    $page_title = 'formfiletext';
+    $page_name = 'Add Tag';
+    return view('admin.addTag',compact('page_title','page_name'));
+}
+
+public function add_Tag(Request $request){
+    $path = "uploads/tags";
+    if(isset($request->image)){
+        $file = $request->file('image');
+        $filename = $file->getClientOriginalName();
+        $file->move($path, $filename);
+        $image = $filename;
+    }else{
+        $image = $request->image_cheat;
+    }
+    $slung = Str::slug($request->name);
+    $Tag = new Tag;
+    $Tag->title = $request->title;
+    $Tag->slung = $slung;
+    $Tag->keywords = $request->keywords;
+    $Tag->save();
+    Session::flash('message', "Tag Has Been Added");
+    return Redirect::back();
+}
+
+public function editTag($id){
+    $Tag = Tag::find($id);
+    $page_title = 'formfiletext';
+    $page_name = 'Edit Home Page Slider';
+    return view('admin.editTag',compact('page_title','Tag','page_name'));
+}
+
+public function edit_Tag(Request $request, $id){
+    $path = 'uploads/tags';
+        if(isset($request->image)){
+            $file = $request->file('image');
+            $filename = $file->getClientOriginalName();
+            $file->move($path, $filename);
+            $image = $filename;
+        }else{
+            $image = $request->image_cheat;
+        }
+    $slung = Str::slug($request->name);
+    $updateDetails = array(
+        'title'=>$request->title,
+        'slung'=>$slung,
+        'keywords'=>$request->keywords,
+        'content'=>$request->content,
+        'image'=>$image
+
+    );
+    DB::table('tags')->where('id',$id)->update($updateDetails);
+    Session::flash('message', "Changes have been saved");
+    return Redirect::back();
+}
+
+public function deleteTag($id){
+    DB::table('category')->where('id',$id)->delete();
     return Redirect::back();
 }
 

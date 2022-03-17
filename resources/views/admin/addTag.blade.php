@@ -24,16 +24,16 @@
                 <ul>
                     <li><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
                     </li>
-                    <li class="active-bre"><a href="#"> Add New Product</a>
+                    <li class="active-bre"><a href="#"> Add New Tag</a>
                     </li>
-                    <li class="page-back"><a href="{{url('/')}}/admin/products"><i class="fa fa-backward" aria-hidden="true"></i> All Products</a>
+                    <li class="page-back"><a href="{{url('/')}}/admin/tags"><i class="fa fa-backward" aria-hidden="true"></i> All Tags</a>
                     </li>
                 </ul>
 
             </div>
             <div class="sb2-2-add-blog sb2-2-1">
-                <h2>Add New Product</h2>
-                <p>Products are listed on the E-commerce Website</p>
+                <h2>Add New Tag</h2>
+                <p>Tags Are Used For Search Engine Optimization</p>
                 <center>
                     @if(Session::has('message'))
                                   <div class="alert alert-success">{{ Session::get('message') }}</div>
@@ -43,70 +43,28 @@
                                   <div class="alert alert-danger">{{ Session::get('messageError') }}</div>
                    @endif
                 </center>
-                <form method="POST" action="{{url('/')}}/admin/add_Product" enctype="multipart/form-data">
+                <form method="POST" action="{{url('/')}}/admin/add_Tag" enctype="multipart/form-data">
                     {{csrf_field()}}
-                    {{-- Category, SubCategory, Tags --}}
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <select name="cat" id="cat" class="mdb-select">
-                                <option value="" disabled selected>Choose Category</option>
-                                <?php $Category = DB::table('categories')->get(); ?>
-                                @foreach ($Category as $cat)
-                                <option value="{{$cat->id}}">{{$cat->title}}</option>
-                                @endforeach
-                            </select>
-                            <label>Select Category</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s12" >
-                            <select name="sub_cat" id="sub_cat" class="sub_cat mdb-select">
-                                {{-- <option value="" disabled="" selected="">Choose Sub Category</option> --}}
-
-                            </select>
-                            <label>Select Sub Category</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <select name="tags" multiple class="mdb-select">
-                                <option value="" disabled selected>Choose Tags</option>
-                                <?php $Tag = DB::table('tags')->get(); ?>
-                                @foreach ($Tag as $tag)
-                                <option value="{{$tag->id}}">{{$tag->title}}</option>
-                                @endforeach
-                            </select>
-                            <label>Select Tag</label>
-                        </div>
-                    </div>
-                    {{-- Category, SubCategory, Tags --}}
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="list-title" name="title" type="text" value="" class="validate">
-                            <label for="list-title">Enter Product Name</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="list-title" name="price" type="text" value="" class="validate">
-                            <label for="list-title">Enter Product Price eg 18500</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <textarea id="textarea1" name="meta" class="materialize-textarea validate"></textarea>
-                            <label for="list-title">Enter Product Meta Infomation</label>
+                            <label for="list-title">Enter Tag Phrase</label>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <textarea required id="article-ckeditor" name="content" class="materialilze-textarea" placeholder="content"></textarea>
-                            {{-- <label for="textarea1">Blog Descriptions:</label> --}}
+                            <textarea id="textarea1" name="keywords" class="materialize-textarea validate"></textarea>
+                            <label for="list-title">Enter Product Meta keywords</label>
                         </div>
-                    </div><br><br>
+                    </div>
+
+                    {{-- <div class="row">
+                        <div class="input-field col s12">
+                            <textarea required id="article-ckeditor" name="content" class="materialilze-textarea" placeholder="content"></textarea>
+                            <label for="textarea1">Blog Descriptions:</label>
+                        </div>
+                    </div><br><br> --}}
                      {{-- Images --}}
                                  {{-- Preview --}}
                             {{-- Style --}}
@@ -140,11 +98,11 @@
                                 <div class="">
                                     <div class="input-field col s12">
                                         <div class="form-group">
-                                            <label>Add Category Featured Image</label>
+                                            <label>Add Tag Featured Image</label>
                                             <div class="input-group">
                                                 <span class="input-group-btn">
                                                     <span class="btn btn-default btn-file">
-                                                        Browse… <input name="fb_pixels" type="file" id="imgInp">
+                                                        Browse… <input name="image" type="file" id="imgInp">
                                                     </span>
                                                 </span>
                                                 <input type="text" class="form-control" readonly>
@@ -161,7 +119,7 @@
                             <div class="clearfix"></div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="submit" class="waves-effect waves-light btn-large" value="Add Product">
+                            <input type="submit" class="waves-effect waves-light btn-large" value="Add Tag">
                         </div>
                     </div>
                 </form>
@@ -172,41 +130,5 @@
     </div>
 </div>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script>
-    $(document).ready(function (e) {
-        $('#cat').on('change', e => {
-            var val = $('#cat').val();
-            $('#sub_cat').empty()
-            $.ajax({
-                url: `/admin/get-subcategories/${val}`,
-                success: function(data){
-                    // $('.sub_cat').material_select();
-                        var toAppend = '';
-                        $.each(data,function(i,o){
-                        toAppend += '<option value="'+o.id+'">'+o.name+'</option>';
-                    });
-                    $('.sub_cat').on('contentChanged', function() {
-                     $(this).material_select();
-                    });
-
-                    $("#sub_cat").append(toAppend);
-                    $("#sub_cat").trigger('contentChanged');
-                    //
-                }
-            })
-        })
-    })
-</script>
-
-<script>
-$( document ).ready(function() {
-    ('.mdb-select').materialSelect();
-
-    $('.mdb-select').click(function( event ) {
-        event.stopPropagation();
-    });  // fixes first click
-});
-</script>
 
 @endsection
