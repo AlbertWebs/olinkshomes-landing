@@ -217,6 +217,14 @@ Route::post('/edit_Photo/{id}',  [AdminsController::class, 'edit_Photo'])->middl
 Route::get('admin/activitylogs', [AdminsController::class, 'activitylogs'])->middleware('is_admin');
 
 
+Route::get('admin/homes', [AdminsController::class, 'homes'])->middleware('is_admin');
+Route::get('admin/editHome/{id}', [AdminsController::class, 'editHome'])->middleware('is_admin');
+Route::get('admin/deleteHome/{id}', [AdminsController::class, 'deleteHome'])->middleware('is_admin');
+Route::post('admin/edit_Home/{id}',  [AdminsController::class, 'edit_Home'])->middleware('is_admin');
+Route::get('admin/addHome',  [AdminsController::class, 'addHome'])->middleware('is_admin');
+Route::post('admin/add_Home',  [AdminsController::class, 'add_Home'])->middleware('is_admin');
+
+
 
 // AJAX REQUESTS
 

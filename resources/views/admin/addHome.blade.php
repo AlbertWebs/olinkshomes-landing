@@ -24,16 +24,16 @@
                 <ul>
                     <li><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
                     </li>
-                    <li class="active-bre"><a href="#"> Edit {{$Product->name}}</a>
+                    <li class="active-bre"><a href="#"> Add New Property</a>
                     </li>
-                    <li class="page-back"><a href="{{url('/')}}/admin/products"><i class="fa fa-backward" aria-hidden="true"></i> All Products</a>
+                    <li class="page-back"><a href="{{url('/')}}/admin/homes"><i class="fa fa-backward" aria-hidden="true"></i> All Properties</a>
                     </li>
                 </ul>
 
             </div>
             <div class="sb2-2-add-blog sb2-2-1">
-                <h2>Edit {{$Product->name}}</h2>
-                <p>Products are listed on the E-commerce Website</p>
+                <h2>Add New Property</h2>
+                <p>Properties are listed on the Real Estate Website</p>
                 <center>
                     @if(Session::has('message'))
                                   <div class="alert alert-success">{{ Session::get('message') }}</div>
@@ -43,16 +43,14 @@
                                   <div class="alert alert-danger">{{ Session::get('messageError') }}</div>
                    @endif
                 </center>
-                <form method="POST" action="{{url('/')}}/admin/edit_Product/{{$Product->id}}" enctype="multipart/form-data">
+                <form method="POST" action="{{url('/')}}/admin/add_Property" enctype="multipart/form-data">
                     {{csrf_field()}}
                     {{-- Category, SubCategory, Tags --}}
                     <div class="row">
                         <div class="input-field col s12">
                             <select name="cat" id="cat" class="mdb-select">
-
-                                <option value="{{$Product->cat}}"  selected><?php $Cats = DB::table('categories')->where('id',$Product->cat)->get(); ?>@foreach ($Cats as $cts){{$cts->title}}@endforeach</option>
-
-                                <?php $Category = DB::table('categories')->where('identifier','shop')->get(); ?>
+                                <option value="" disabled selected>Choose Category</option>
+                                <?php $Category = DB::table('categories')->where('identifier','homes')->get(); ?>
                                 @foreach ($Category as $cat)
                                 <option value="{{$cat->id}}">{{$cat->title}}</option>
                                 @endforeach
@@ -64,7 +62,7 @@
                     <div class="row">
                         <div class="input-field col s12" >
                             <select name="sub_cat" id="sub_cat" class="sub_cat mdb-select">
-                                <option value="{{$Product->sub_cat}}"  selected><?php $Cats = DB::table('sub_category')->where('identifier','shop')->where('id',$Product->id)->get(); ?>@foreach ($Cats as $cts){{$cts->name}}@endforeach</option>
+                                {{-- <option value="" disabled="" selected="">Choose Sub Category</option> --}}
 
                             </select>
                             <label>Select Sub Category</label>
@@ -74,7 +72,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <select name="tags" multiple class="mdb-select">
-                                <option value="{{$Product->tag}}"  selected><?php $Cats = DB::table('tags')->where('id',$Product->tag)->get(); ?>@foreach ($Cats as $cts){{$cts->title}}@endforeach</option>
+                                <option value="" disabled selected>Choose Tags</option>
                                 <?php $Tag = DB::table('tags')->get(); ?>
                                 @foreach ($Tag as $tag)
                                 <option value="{{$tag->id}}">{{$tag->title}}</option>
@@ -86,71 +84,46 @@
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <select name="google_product_category" class="mdb-select">
-                                {{-- <option value="" disabled selected>Google Product Category</option> --}}
-                                <option value="{{$Product->google_product_category}}"  selected><?php $Cats = DB::table('g_p_c_s')->where('id',$Product->google_product_category)->get(); ?>@foreach ($Cats as $cts){{$cts->category}}@endforeach</option>
+                            <select name="google_Product_category" class="mdb-select">
+                                <option value="" disabled selected>Google Product Category</option>
                                 <?php $Tag = DB::table('g_p_c_s')->get(); ?>
                                 @foreach ($Tag as $tag)
                                 <option value="{{$tag->code}}">{{$tag->category}}</option>
                                 @endforeach
                             </select>
-                            <label>Select Google Category</label>
+                            <label>Select Tag</label>
                         </div>
                     </div>
                     {{-- Category, SubCategory, Tags --}}
+                    <?php $Random = rand(100,500); ?>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="list-title" name="title" type="text" value="{{$Product->name}}" class="validate">
-                            <label for="list-title">Enter Product Name</label>
+                            <input readonly id="list-title" name="code" type="text" value="OLINKS-HOMES-{{date('Y')}}-{{date('d')}}{{date('m')}}-{{generateRandomString(5)}}" class="validate">
+                            <label for="list-title">Enter Property Code</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="list-title" name="code" type="text" value="{{$Product->code}}" class="validate">
-                            <label for="list-title">Enter Product Code</label>
+                            <input id="list-title" name="title" type="text" value="" class="validate">
+                            <label for="list-title">Enter Property Name</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="list-title" name="price" type="text" value="{{$Product->price}}" class="validate">
-                            <label for="list-title">Enter Product Price eg 18500</label>
+                            <input id="list-title" name="price" type="text" value="" class="validate">
+                            <label for="list-title">Enter Property Price eg 18500</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <textarea id="textarea1" name="meta" class="materialize-textarea validate">{{$Product->meta}}</textarea>
-                            <label for="list-title">Enter Product Meta Infomation</label>
+                            <textarea id="textarea1" name="meta" class="materialize-textarea validate"></textarea>
+                            <label for="list-title">Enter Property Meta Infomation</label>
                         </div>
                     </div>
-                    {{-- Stock Control  --}}
-                    <div class="row">
-                        <label for="list-title">In Stock</label>
-                        <div class="input-field col s12">
-                            <?php
-                                $Stock = $Product->stock;
-                                if($Stock == '1'){
-                                    $stockValue = 'checked';
-                                }else{
-                                    $stockValue = 'Out of Stock';
-                                }
-                            ?>
-                            <div class="tab-inn">
-                                <!-- Switch -->
-                                <div class="switch mar-bot-20">
-                                    <label>
-                                        Out Of Stock
-                                        <input name="stock" type="checkbox" {{$stockValue}}>
-                                        <span class="lever"></span> In Stock
-                                    </label>
-                                </div>
 
-                            </div>
-                        </div>
-                    </div>
-                    {{--  --}}
                     <div class="row">
                         <div class="input-field col s12">
-                            <textarea required id="article-ckeditor" name="content" class="materialilze-textarea" placeholder="content">{{$Product->content}}</textarea>
+                            <textarea required id="article-ckeditor" name="content" class="materialilze-textarea" placeholder="content"></textarea>
                             {{-- <label for="textarea1">Blog Descriptions:</label> --}}
                         </div>
                     </div><br><br>
@@ -196,21 +169,19 @@
                                                 </span>
                                                 <input type="text" class="form-control" readonly>
                                             </div>
-                                            <img class="image-preview" style="width:auto;" src="{{url('/')}}/uploads/products/{{$Product->fb_pixels}}" id='img-upload'/>
+                                            <img class="image-preview" style="width:auto;" src="" id='img-upload'/>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             {{-- Preview --}}
 
-
                             {{-- Images --}}
                             <br><br>
-                            <input type="hidden" name="fb_pixels_cheat" value="{{$Product->fb_pixels}}">
                             <div class="clearfix"></div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="submit" class="waves-effect waves-light btn-large" value="Save Changes">
+                            <input type="submit" class="waves-effect waves-light btn-large" value="Add Property">
                         </div>
                     </div>
                 </form>

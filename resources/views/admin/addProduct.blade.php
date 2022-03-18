@@ -50,7 +50,7 @@
                         <div class="input-field col s12">
                             <select name="cat" id="cat" class="mdb-select">
                                 <option value="" disabled selected>Choose Category</option>
-                                <?php $Category = DB::table('categories')->get(); ?>
+                                <?php $Category = DB::table('categories')->where('identifier','shop')->get(); ?>
                                 @foreach ($Category as $cat)
                                 <option value="{{$cat->id}}">{{$cat->title}}</option>
                                 @endforeach

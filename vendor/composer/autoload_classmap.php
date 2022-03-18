@@ -33,6 +33,7 @@ return array(
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\Copyright' => $baseDir . '/app/Models/Copyright.php',
     'App\\Models\\GPCS' => $baseDir . '/app/Models/GPCS.php',
+    'App\\Models\\Home' => $baseDir . '/app/Models/Home.php',
     'App\\Models\\How' => $baseDir . '/app/Models/How.php',
     'App\\Models\\Message' => $baseDir . '/app/Models/Message.php',
     'App\\Models\\Photo' => $baseDir . '/app/Models/Photo.php',
