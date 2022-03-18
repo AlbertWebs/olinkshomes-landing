@@ -42,7 +42,7 @@
                 </center>
 
                 <table class="table">
-                    <thead>
+                    <thead style="text-align: center">
                         <tr>
                             <th>#</th>
                             <th>Name</th>
@@ -51,16 +51,22 @@
                             <th>Delete</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="text-align: center">
                         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
                         @foreach ($Product as $item)
                         <tr>
                             <td>{{$item->id}}</td>
-                            <td>{{$item->title}}</td>
-                            <td><img src="{{url('/')}}/uploads/products/{{$item->fb_pixels}}"></td>
-                            <td><a href="{{url('/')}}/admin/editProduct/{{$item->id}}" class="sb2-2-1-edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            <td>{{$item->name}}</td>
+                            <td>
+                                    <img width="100" src="{{url('/')}}/uploads/products/{{$item->fb_pixels}}">
+                                    <br><br>
+                                    <div>
+                                        <a class="red pulse" style="background: #f44336; color: #fff !important; font-size: 12px; padding: 3px 8px; border-radius: 25px; font-weight: 600;" href="{{url('/')}}/admin/dropzone/{{$item->id}}" class="sb2-2-1-edit"><i class="fa fa-plus " aria-hidden="true"></i>Stream Photos</a>
+                                    </div>
                             </td>
-                            <td><a onclick="archiveFunction{{$item->id}}()" href="#" class="sb2-2-1-edit"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            <td><a href="{{url('/')}}/admin/editProduct/{{$item->id}}" class="sb2-2-1-edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+                            </td>
+                            <td><a onclick="archiveFunction{{$item->id}}()" href="#" class="sb2-2-1-edit"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a>
                             </td>
                         </tr>
                         <script>

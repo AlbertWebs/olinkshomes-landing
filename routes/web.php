@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DropzoneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -205,7 +206,13 @@ Route::post('admin/edit_Tag/{id}',  [AdminsController::class, 'edit_Tag'])->midd
 Route::get('admin/addTag',  [AdminsController::class, 'addTag'])->middleware('is_admin');
 Route::post('admin/add_Tag',  [AdminsController::class, 'add_Tag'])->middleware('is_admin');
 
-
+Route::get('admin/dropzone/{id}', [DropzoneController::class, 'dropzone']);
+Route::post('admin/dropzone/store', [DropzoneController::class, 'dropzoneStore'])->name('dropzone.store');
+Route::get('/photos', [AdminsController::class, 'photos'])->middleware('is_admin');
+Route::get('/photosGrid', [AdminsController::class, 'photosGrid'])->middleware('is_admin');
+Route::get('/editPhoto/{id}',  [AdminsController::class, 'editPhoto'])->middleware('is_admin');
+Route::get('/deletePhoto/{id}',  [AdminsController::class, 'deletePhoto'])->middleware('is_admin');
+Route::post('/edit_Photo/{id}',  [AdminsController::class, 'edit_Photo'])->middleware('is_admin');
 
 Route::get('admin/activitylogs', [AdminsController::class, 'activitylogs'])->middleware('is_admin');
 

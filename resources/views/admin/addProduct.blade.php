@@ -81,6 +81,19 @@
                             <label>Select Tag</label>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select name="google_product_category" class="mdb-select">
+                                <option value="" disabled selected>Google Product Category</option>
+                                <?php $Tag = DB::table('g_p_c_s')->get(); ?>
+                                @foreach ($Tag as $tag)
+                                <option value="{{$tag->code}}">{{$tag->category}}</option>
+                                @endforeach
+                            </select>
+                            <label>Select Tag</label>
+                        </div>
+                    </div>
                     {{-- Category, SubCategory, Tags --}}
                     <div class="row">
                         <div class="input-field col s12">
