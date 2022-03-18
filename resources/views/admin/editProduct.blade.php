@@ -106,6 +106,12 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
+                            <input id="list-title" name="code" type="text" value="{{$Product->code}}" class="validate">
+                            <label for="list-title">Enter Product Code</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
                             <input id="list-title" name="price" type="text" value="{{$Product->price}}" class="validate">
                             <label for="list-title">Enter Product Price eg 18500</label>
                         </div>
@@ -116,7 +122,32 @@
                             <label for="list-title">Enter Product Meta Infomation</label>
                         </div>
                     </div>
+                    {{-- Stock Control  --}}
+                    <div class="row">
+                        <label for="list-title">In Stock</label>
+                        <div class="input-field col s12">
+                            <?php
+                                $Stock = $Product->stock;
+                                if($Stock == '1'){
+                                    $stockValue = 'checked';
+                                }else{
+                                    $stockValue = 'Out of Stock';
+                                }
+                            ?>
+                            <div class="tab-inn">
+                                <!-- Switch -->
+                                <div class="switch mar-bot-20">
+                                    <label>
+                                        Out Of Stock
+                                        <input name="stock" type="checkbox" {{$stockValue}}>
+                                        <span class="lever"></span> In Stock
+                                    </label>
+                                </div>
 
+                            </div>
+                        </div>
+                    </div>
+                    {{--  --}}
                     <div class="row">
                         <div class="input-field col s12">
                             <textarea required id="article-ckeditor" name="content" class="materialilze-textarea" placeholder="content">{{$Product->content}}</textarea>

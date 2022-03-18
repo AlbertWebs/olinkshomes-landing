@@ -95,6 +95,13 @@
                         </div>
                     </div>
                     {{-- Category, SubCategory, Tags --}}
+                    <?php $Random = rand(100,500); ?>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="list-title" name="code" type="text" value="OLINKS-{{date('Y')}}-{{date('d')}}{{date('m')}}-{{generateRandomString(5)}}" class="validate">
+                            <label for="list-title">Enter Product Code</label>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="list-title" name="title" type="text" value="" class="validate">
