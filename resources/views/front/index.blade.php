@@ -6,7 +6,7 @@
 >
   <head>
     <meta charset="utf-8" />
-    <title>Olinks Homes - </title>
+    <title>Linking you to Luxurious Housing - Olinks Homes - Dial a Fundi</title>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Webflow" name="generator" />
     <link href="{{asset('frontend/css/normalize.css')}}" rel="stylesheet" type="text/css" />
