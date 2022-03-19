@@ -46,7 +46,7 @@
                         <tr>
                             <th>#</th>
                             <th>Title</th>
-
+                            <th>Identifier</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
@@ -57,7 +57,7 @@
                         <tr>
                             <td>{{$item->id}}</td>
                             <td>{{$item->title}}</td>
-
+                            <td>{{$item->identifier}}</td>
                             <td><a href="{{url('/')}}/admin/editCategories/{{$item->id}}" class="sb2-2-1-edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             </td>
                             <td><a onclick="archiveFunction{{$item->id}}()" href="#" class="sb2-2-1-edit"><i class="fa fa-trash-o" aria-hidden="true"></i></a>

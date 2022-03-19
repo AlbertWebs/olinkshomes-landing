@@ -46,6 +46,7 @@
                         <tr>
                             <th>#</th>
                             <th>Title</th>
+                            <th>Identifier</th>
                             <th>Parent Category</th>
                             <th>Edit</th>
                             <th>Delete</th>
@@ -57,6 +58,7 @@
                         <tr>
                             <td>{{$item->id}}</td>
                             <td>{{$item->name}}</td>
+                            <td>{{$item->identifier}}</td>
                             <td>
                                 <?php $CategorySelected = DB::table('categories')->where('id',$item->cat_id)->get() ?>
                                 @foreach ($CategorySelected as $CatSel)

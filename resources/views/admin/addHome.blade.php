@@ -50,7 +50,7 @@
                         <div class="input-field col s12">
                             <select name="cat" id="cat" class="mdb-select">
                                 <option value="" disabled selected>Choose Category</option>
-                                <?php $Category = DB::table('categories')->where('identifier','homes')->get(); ?>
+                                <?php $Category = DB::table('categories')->where('identifier','home')->get(); ?>
                                 @foreach ($Category as $cat)
                                 <option value="{{$cat->id}}">{{$cat->title}}</option>
                                 @endforeach
@@ -212,7 +212,7 @@
             var val = $('#cat').val();
             $('#sub_cat').empty()
             $.ajax({
-                url: `/admin/get-subcategories/${val}`,
+                url: `/admin/gets-subcategories/${val}`,
                 success: function(data){
                     // $('.sub_cat').material_select();
                         var toAppend = '';

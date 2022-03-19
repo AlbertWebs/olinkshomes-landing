@@ -32,6 +32,8 @@ Route::get('admin/logo-and-favicon', [AdminsController::class, 'logo_and_favicon
 Route::post('admin/logo-and-favicon-update', [AdminsController::class, 'logo_and_favicon_update'])->middleware('is_admin');
 
 Route::get('admin/get-subcategories/{id}',  [AdminsController::class, 'get_subcategories'])->middleware('is_admin');
+Route::get('admin/gets-subcategories/{id}',  [AdminsController::class, 'gets_subcategories'])->middleware('is_admin');
+
 
 // Banners
 Route::get('admin/banners', [AdminsController::class, 'banners'])->middleware('is_admin');
@@ -206,8 +208,11 @@ Route::post('admin/edit_Tag/{id}',  [AdminsController::class, 'edit_Tag'])->midd
 Route::get('admin/addTag',  [AdminsController::class, 'addTag'])->middleware('is_admin');
 Route::post('admin/add_Tag',  [AdminsController::class, 'add_Tag'])->middleware('is_admin');
 
+
+Route::get('admin/dropzones/{id}', [DropzoneController::class, 'dropzones']);
 Route::get('admin/dropzone/{id}', [DropzoneController::class, 'dropzone']);
 Route::post('admin/dropzone/store', [DropzoneController::class, 'dropzoneStore'])->name('dropzone.store');
+Route::post('admin/dropzones/store', [DropzoneController::class, 'dropzoneStores'])->name('dropzones.store');
 Route::get('/photos', [AdminsController::class, 'photos'])->middleware('is_admin');
 Route::get('/photosGrid', [AdminsController::class, 'photosGrid'])->middleware('is_admin');
 Route::get('/editPhoto/{id}',  [AdminsController::class, 'editPhoto'])->middleware('is_admin');
@@ -218,12 +223,13 @@ Route::get('admin/activitylogs', [AdminsController::class, 'activitylogs'])->mid
 
 
 Route::get('admin/homes', [AdminsController::class, 'homes'])->middleware('is_admin');
+Route::get('admin/homes/destroy', [AdminsController::class, 'homes_destroy'])->middleware('is_admin');
 Route::get('admin/editHome/{id}', [AdminsController::class, 'editHome'])->middleware('is_admin');
 Route::get('admin/deleteHome/{id}', [AdminsController::class, 'deleteHome'])->middleware('is_admin');
 Route::post('admin/edit_Home/{id}',  [AdminsController::class, 'edit_Home'])->middleware('is_admin');
 Route::get('admin/addHome',  [AdminsController::class, 'addHome'])->middleware('is_admin');
 Route::post('admin/add_Home',  [AdminsController::class, 'add_Home'])->middleware('is_admin');
-Route::post('admin/addAmenities',  [AdminsController::class, 'addAmenities'])->middleware('is_admin');
+Route::get('admin/addAmenities',  [AdminsController::class, 'addAmenities'])->middleware('is_admin');
 Route::post('admin/add_Amenities',  [AdminsController::class, 'add_Amenities'])->middleware('is_admin');
 
 Route::get('admin/addPlan',  [AdminsController::class, 'addPlan'])->middleware('is_admin');

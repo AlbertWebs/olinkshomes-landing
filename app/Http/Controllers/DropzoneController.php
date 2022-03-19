@@ -8,6 +8,8 @@ use App\Models\Photo;
 
 use App\Models\Product;
 
+use App\Models\Gallery;
+
 class DropzoneController extends Controller
 {
 
@@ -23,6 +25,16 @@ class DropzoneController extends Controller
         $page_title = "";
         return view('admin.dropzone', compact('page_name','page_title','Product'));
     }
+
+    public function dropzones($id)
+    {
+        $Product = Product::find($id);
+        $page_name = "";
+        $page_title = "";
+        return view('admin.dropzones', compact('page_name','page_title','Product'));
+    }
+
+
 
     /**
      * Image Upload Code
@@ -47,5 +59,25 @@ class DropzoneController extends Controller
 
         return response()->json(['success'=>$imageName]);
     }
+
+    public function dropzoneStores(Request $request)
+    {
+        $image = $request->file('file');
+
+        $OriginalName = $image->getClientOriginalName();
+        // $imageName = $OriginalName.'.'.$image->extension();
+        $imageName = $OriginalName;
+
+        $image->move(public_path('uploads/homes'),$imageName);
+        // add to dDatabase
+        $Photos = new Gallery;
+        $Photos->name  = $imageName;
+        $Photos->home_id = $request->product_id;
+        $Photos->path = public_path('uploads/homes');
+        $Photos->save();
+        return response()->json(['success'=>$imageName]);
+    }
+
+
 
 }

@@ -23,6 +23,8 @@ class CreateFactsTable extends Migration
             $table->string('gym')->nullable();
             $table->string('garden')->nullable();
             $table->string('parking')->nullable();
+            $table->string('property_id')->nullable();
+
             $table->timestamps();
         });
     }

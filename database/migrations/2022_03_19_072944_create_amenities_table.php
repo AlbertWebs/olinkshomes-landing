@@ -15,7 +15,7 @@ class CreateAmenitiesTable extends Migration
     {
         Schema::create('amenities', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('product_id')->nullable();
+            $table->string('property_id')->nullable();
             $table->string('air_conditioning')->nullable();
             $table->string('gym')->nullable();
             $table->string('microwave')->nullable();

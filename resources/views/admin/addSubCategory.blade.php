@@ -56,7 +56,7 @@
                             <select name="identifier">
                                 <option value="" disabled selected>Choose Identifier type</option>
                                 <option value="web">web</option>
-                                <option value="homes">homes</option>
+                                <option value="home">home</option>
                                 <option value="shop">shop</option>
                             </select>
                             <label>Select Category</label>
@@ -139,7 +139,7 @@
                             <div class="clearfix"></div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="submit" class="waves-effect waves-light btn-large" value="Add Category">
+                            <input type="submit" class="waves-effect waves-light btn-large" value="Add Sub Category">
                         </div>
                     </div>
                 </form>

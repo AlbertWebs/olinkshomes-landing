@@ -15,11 +15,15 @@ use App\Models\Copyright;
 
 use App\Models\FAQ;
 
+use App\Models\Amenity;
+
 use VideoThumbnail;
 
 use App\Models\How;
 
 use App\Models\Home;
+
+use App\Models\Fact;
 
 use App\Models\Tag;
 
@@ -1347,6 +1351,13 @@ class AdminsController extends Controller
         }
     }
 
+    public function gets_subcategories(Request $request,$id){
+        if ($request->ajax()) {
+            $data =  DB::table('sub_category')->where('cat_id', $id)->where('identifier','home')->get();
+            return response()->json($data);
+        }
+    }
+
     public function deleteBlogAjax(Request $request){
         activity()->log('Evoked a delete Blog Request');
         $id = $request->id;
@@ -2117,7 +2128,7 @@ if(isset($request->fb_pixels)){
 
     $slung = Str::slug($request->name);
     $Home = new Home;
-    $Home->name = $request->title;
+    $Home->title = $request->title;
     $Home->google_product_category = $request->google_product_category;
     $Home->slung = $slung;
     $Home->tag = $request->tags;
@@ -2150,7 +2161,7 @@ public function addAmenities(){
 
 public function add_Amenities(Request $request){
     $Amenity = new Amenity;
-    $Amenity->product_id = $request->product_id;
+    $Amenity->property_id = $request->product_id;
     $Amenity->air_conditioning = $request->air_conditioning;
     $Amenity->gym = $request->gym;
     $Amenity->microwave = $request->microwave;
@@ -2167,6 +2178,7 @@ public function add_Amenities(Request $request){
     $Amenity->window_coverings = $request->window_coverings;
     $Amenity->elevator = $request->elevator;
     $Amenity->save();
+    Session::flash('message', "Amenities have been updated");
     return redirect('/admin/addFacts');
 }
 
@@ -2178,7 +2190,7 @@ public function addFacts(){
     return view('admin.addFacts',compact('page_title','Home','page_name'));
 }
 
-public function add_Facts(){
+public function add_Facts(Request $request){
     $Fact = new Fact;
     $Fact->living_room = $request->living_room;
     $Fact->garage = $request->garage;
@@ -2188,6 +2200,7 @@ public function add_Facts(){
     $Fact->gym = $request->gym;
     $Fact->garden = $request->garden;
     $Fact->parking = $request->parking;
+    $Fact->property_id = $request->property_id;
     $Fact->save();
     return redirect('/admin/addGallery');
 }
@@ -2227,6 +2240,12 @@ public function add_Plan(){
     }
 }
 
+
+public function homes_destroy(){
+    // Destroy Session
+    Session::forget('property');
+    return redirect('/admin/homes');
+}
 
 public function homes(){
     $Home = Home::all();
