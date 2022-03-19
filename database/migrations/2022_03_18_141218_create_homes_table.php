@@ -18,6 +18,8 @@ class CreateHomesTable extends Migration
             $table->string('title')->nullable();
             $table->string('slung')->nullable();
             $table->text('meta')->nullable();
+            $table->text('map')->nullable();
+            $table->text('location')->nullable();
             $table->integer('cat')->nullable();
             $table->integer('sub_cat')->nullable();
             $table->integer('google_product_category')->nullable();

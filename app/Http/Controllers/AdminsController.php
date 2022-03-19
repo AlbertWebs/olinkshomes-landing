@@ -2049,42 +2049,28 @@ public function addHome(){
 public function add_Home(Request $request){
 
     $path = 'uploads/homes';
-    if(isset($request->fb_pixels)){
-        $fileSize = $request->file('fb_pixels')->getSize();
-            if($fileSize>=1800000){
-            Session::flash('message', "File Exceeded the maximum allowed Size");
-            Session::flash('messageError', "An error occured, You may have exceeded the maximum size for an image you uploaded");
-            return Redirect::back();
-            }else{
-
-                $file = $request->file('fb_pixels');
-                /** Renaming Edits */
-                $extension = $file->getClientOriginalExtension();
-                $image_main_temp = $request->name.'-fb_pixels.'.$extension;
-                $fb_pixels = str_replace(' ', '-',$image_main_temp);
-                $file->move($path, $fb_pixels);
-                /* Renaming Edits Ends*/
-            }
-    }else{
+if(isset($request->fb_pixels)){
+        $file = $request->file('fb_pixels');
+        /** Renaming Edits */
+        $extension = $file->getClientOriginalExtension();
+        $image_main_temp = $request->name.'-fb_pixels.'.$extension;
+        $fb_pixels = str_replace(' ', '-',$image_main_temp);
+        $file->move($path, $fb_pixels);
+        /* Renaming Edits Ends*/
+    }
+    else
+    {
         $fb_pixels = $request->pro_img_cheat;
     }
 
     if(isset($request->thumbnail)){
-        $fileSize = $request->file('thumbnail')->getSize();
-            if($fileSize>=1800000){
-            Session::flash('message', "File Exceeded the maximum allowed Size");
-            Session::flash('messageError', "An error occured, You may have exceeded the maximum size for an image you uploaded");
-            return Redirect::back();
-            }else{
-
-                $file = $request->file('thumbnail');
-                /** Renaming Edits */
-                $extension = $file->getClientOriginalExtension();
-                $image_main_temp = $request->name.'-thumbnail.'.$extension;
-                $thumbnail = str_replace(' ', '-',$image_main_temp);
-                $file->move($path, $thumbnail);
-                /* Renaming Edits Ends*/
-            }
+        $file = $request->file('thumbnail');
+        /** Renaming Edits */
+        $extension = $file->getClientOriginalExtension();
+        $image_main_temp = $request->name.'-thumbnail.'.$extension;
+        $thumbnail = str_replace(' ', '-',$image_main_temp);
+        $file->move($path, $thumbnail);
+        /* Renaming Edits Ends*/
     }else{
         $thumbnail = $request->pro_img_cheat;
     }
@@ -2092,62 +2078,38 @@ public function add_Home(Request $request){
 
 
     if(isset($request->image_one)){
-        $fileSize = $request->file('image_one')->getSize();
-            if($fileSize>=1800000){
-            Session::flash('message', "File Exceeded the maximum allowed Size");
-            Session::flash('messageError', "An error occured, You may have exceeded the maximum size for an image you uploaded");
-            return Redirect::back();
-            }else{
-
-                $file = $request->file('image_one');
-                /** Renaming Edits */
-                $extension = $file->getClientOriginalExtension();
-                $image_main_temp = $request->name.'-001.'.$extension;
-                $image_one = str_replace(' ', '-',$image_main_temp);
-                $file->move($path, $image_one);
-                /* Renaming Edits Ends*/
-            }
+        $file = $request->file('image_one');
+        /** Renaming Edits */
+        $extension = $file->getClientOriginalExtension();
+        $image_main_temp = $request->name.'-001.'.$extension;
+        $image_one = str_replace(' ', '-',$image_main_temp);
+        $file->move($path, $image_one);
+        /* Renaming Edits Ends*/
     }else{
         $image_one = $request->pro_img_cheat;
     }
 
     if(isset($request->image_two)){
-        $fileSize = $request->file('image_two')->getSize();
-         if($fileSize>=1800000){
-            Session::flash('message', "File Exceeded the maximum allowed Size");
-            Session::flash('messageError', "An error occured, You may have exceeded the maximum size for an image you uploaded");
-
-         }else{
-
-             $file = $request->file('image_two');
-             /** Renaming Edits */
-             $extension = $file->getClientOriginalExtension();
-             $image_main_temp = $request->name.'-002.'.$extension;
-             $image_two = str_replace(' ', '-',$image_main_temp);
-             $file->move($path, $image_two);
-             /* Renaming Edits Ends*/
-         }
+        $file = $request->file('image_two');
+        /** Renaming Edits */
+        $extension = $file->getClientOriginalExtension();
+        $image_main_temp = $request->name.'-002.'.$extension;
+        $image_two = str_replace(' ', '-',$image_main_temp);
+        $file->move($path, $image_two);
+        /* Renaming Edits Ends*/
     }else{
         $image_two = $request->pro_img_cheat;
     }
 
 
     if(isset($request->image_three)){
-        $fileSize = $request->file('image_three')->getSize();
-        if($fileSize>=1800000){
-           Session::flash('message', "File Exceeded the maximum allowed Size");
-           Session::flash('messageError', "An error occured, You may have exceeded the maximum size for an image you uploaded");
-
-        }else{
-
-            $file = $request->file('image_three');
-             /** Renaming Edits */
-             $extension = $file->getClientOriginalExtension();
-             $image_main_temp = $request->name.'-003.'.$extension;
-             $image_three = str_replace(' ', '-',$image_main_temp);
-             $file->move($path, $image_three);
-             /* Renaming Edits Ends*/
-        }
+        $file = $request->file('image_three');
+        /** Renaming Edits */
+        $extension = $file->getClientOriginalExtension();
+        $image_main_temp = $request->name.'-003.'.$extension;
+        $image_three = str_replace(' ', '-',$image_main_temp);
+        $file->move($path, $image_three);
+        /* Renaming Edits Ends*/
     }else{
         $image_three = $request->pro_img_cheat;
     }
@@ -2158,29 +2120,113 @@ public function add_Home(Request $request){
     $Home->name = $request->title;
     $Home->google_product_category = $request->google_product_category;
     $Home->slung = $slung;
-    $Home->iframe = $request->iframe;
     $Home->tag = $request->tags;
+    $Home->video = $request->video;
+    $Home->location = $request->location;
+    $Home->map = $request->map;
     $Home->meta = $request->meta;
     $Home->content = $request->content;
     $Home->price = $request->price;
-    $Home->brand = $request->brand;
     $Home->price_raw = $request->price;
     $Home->code = $request->code;
     $Home->cat = $request->cat;
     $Home->sub_cat = $request->sub_cat;
-    $Home->image_one = $image_one;
     $Home->fb_pixels = $fb_pixels;
-
     $Home->thumbnail = $thumbnail;
-
-    $Home->image_two = $image_two;
-    $Home->image_three = $image_three;
-
     $Home->save();
-
     Session::flash('message', "You have Added One New Home");
-    return Redirect::back();
+    Session::put('property', $slung);
+    return redirect('/admin/addAmenities');
 }
+
+public function addAmenities(){
+    $slung = Session::get('property');
+    $Home = Home::where('slung',$slung)->get();
+    $page_title = 'list';
+    $page_name = 'Add Amenities';
+    return view('admin.addAmenities',compact('page_title','Home','page_name'));
+}
+
+
+public function add_Amenities(Request $request){
+    $Amenity = new Amenity;
+    $Amenity->product_id = $request->product_id;
+    $Amenity->air_conditioning = $request->air_conditioning;
+    $Amenity->gym = $request->gym;
+    $Amenity->microwave = $request->microwave;
+    $Amenity->swimming_pool = $request->swimming_pool;
+    $Amenity->wifi = $request->wifi;
+    $Amenity->barbeque = $request->barbeque;
+    $Amenity->recreation = $request->recreation;
+    $Amenity->basketball_court = $request->basketball_court;
+    $Amenity->fireplace = $request->fireplace;
+    $Amenity->refrigerator = $request->refrigerator;
+    $Amenity->washer = $request->washer;
+    $Amenity->security = $request->security;
+    $Amenity->indoor_games = $request->indoor_games;
+    $Amenity->window_coverings = $request->window_coverings;
+    $Amenity->elevator = $request->elevator;
+    $Amenity->save();
+    return redirect('/admin/addFacts');
+}
+
+public function addFacts(){
+    $slung = Session::get('property');
+    $Home = Home::where('slung',$slung)->get();
+    $page_title = 'list';
+    $page_name = 'Add Property Gallery';
+    return view('admin.addFacts',compact('page_title','Home','page_name'));
+}
+
+public function add_Facts(){
+    $Fact = new Fact;
+    $Fact->living_room = $request->living_room;
+    $Fact->garage = $request->garage;
+    $Fact->dining_area = $request->dining_area;
+    $Fact->bedroom = $request->bedroom;
+    $Fact->bathroom = $request->bathroom;
+    $Fact->gym = $request->gym;
+    $Fact->garden = $request->garden;
+    $Fact->parking = $request->parking;
+    $Fact->save();
+    return redirect('/admin/addGallery');
+}
+
+
+public function addGallery(){
+    $slung = Session::get('property');
+    $Home = Home::where('slung',$slung)->get();
+    $page_title = 'list';
+    $page_name = 'Add Property Gallery';
+    return view('admin.addGallery',compact('page_title','Home','page_name'));
+}
+
+
+public function addPlan(){
+    $slung = Session::get('property');
+    $Home = Home::where('slung',$slung)->get();
+    $page_title = 'list';
+    $page_name = 'Add Property Plans';
+    return view('admin.addPlan',compact('page_title','Home','page_name'));
+}
+
+
+public function add_Plan(){
+    // Process Image
+    $Plan = new Plan;
+    $Plan->title = $request->title;
+    $Plan->image = $image;
+    $Plan->save();
+
+    if($request->continue == 1){
+        return redirect('/admin/addPlan');
+    }else{
+        // Destroy Session
+        Session::flash('message', "You have Added One New Home");
+        return redirect('/admin/homes');
+    }
+}
+
 
 public function homes(){
     $Home = Home::all();

@@ -43,7 +43,7 @@
                                   <div class="alert alert-danger">{{ Session::get('messageError') }}</div>
                    @endif
                 </center>
-                <form method="POST" action="{{url('/')}}/admin/add_Property" enctype="multipart/form-data">
+                <form method="POST" action="{{url('/')}}/admin/add_Home" enctype="multipart/form-data">
                     {{csrf_field()}}
                     {{-- Category, SubCategory, Tags --}}
                     <div class="row">
@@ -110,8 +110,21 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
+                            <input id="list-title" name="location" type="text" value="" class="validate">
+                            <label for="list-title">Enter Property Location</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
                             <input id="list-title" name="price" type="text" value="" class="validate">
                             <label for="list-title">Enter Property Price eg 18500</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="textarea1" name="map" class="materialize-textarea validate"></textarea>
+                            <label for="list-title">map iframe</label>
                         </div>
                     </div>
                     <div class="row">
