@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
    <head>
-      <title>Home - One Page Layout | Canvas</title>
+      <title>Home - One Page Layout | Olinks Homes</title>
       <meta http-equiv="content-type" content="text/html; charset=utf-8" />
       <meta http-equiv="content-type" content="text/html;charset=utf-8" />
       <meta name="author" content="Designekta Studios" />
@@ -31,7 +31,7 @@
                         <div class="row col-mb-50">
                            <div class="col-md-4">
                               <div class="widget clearfix">
-                                 <img src="images/footer-widget-logo.png" alt="Image" class="footer-logo">
+                                 <img src="images/footer-widget-logo.png" alt="Olinks Homes" class="footer-logo">
                                  <p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp; <strong>Flexible</strong> Design Standards.</p>
                                  <div style="background: url('images/world-map.png') no-repeat center center; background-size: 100%;">
                                     <address>
@@ -39,8 +39,8 @@
                                        795 Folsom Ave, Suite 600<br>
                                        San Francisco, CA 94107<br>
                                     </address>
-                                    <abbr title="Phone Number"><strong>Phone:</strong></abbr> (1) 8547 632521<br>
-                                    <abbr title="Fax"><strong>Fax:</strong></abbr> (1) 11 4752 1433<br>
+                                    <abbr title="Phone Number"><strong>Phone:</strong></abbr> 0701211206<br>
+                                    <abbr title="Fax"><strong>Fax:</strong></abbr> 0701211206<br>
                                     <abbr title="Email Address"><strong>Email:</strong></abbr> <a href="https://themes.semicolonweb.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a0c9cec6cfe0c3c1ced6c1d38ec3cfcd">[email&#160;protected]</a>
                                  </div>
                               </div>
@@ -54,8 +54,8 @@
                                     <li><a href="https://wordpress.org/extend/plugins/">Plugins</a></li>
                                     <li><a href="https://wordpress.org/support/">Support Forums</a></li>
                                     <li><a href="https://wordpress.org/extend/themes/">Themes</a></li>
-                                    <li><a href="https://wordpress.org/news/">Canvas Blog</a></li>
-                                    <li><a href="https://planet.wordpress.org/">Canvas Planet</a></li>
+                                    <li><a href="https://wordpress.org/news/">Olinks Homes Blog</a></li>
+                                    <li><a href="https://planet.wordpress.org/">Olinks Homes Planet</a></li>
                                  </ul>
                               </div>
                            </div>
@@ -130,7 +130,7 @@
                               <div class="widget subscribe-widget clearfix">
                                  <h5><strong>Subscribe</strong> to Our Newsletter to get Important News, Amazing Offers &amp; Inside Scoops:</h5>
                                  <div class="widget-subscribe-form-result"></div>
-                                 <form id="widget-subscribe-form" action="https://themes.semicolonweb.com/html/canvas/include/subscribe.php" method="post" class="mb-0">
+                                 <form id="widget-subscribe-form" action="https://themes.semicolonweb.com/html/Olinks Homes/include/subscribe.php" method="post" class="mb-0">
                                     <div class="input-group mx-auto">
                                        <div class="input-group-text"><i class="icon-email2"></i></div>
                                        <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Enter your Email">
@@ -168,7 +168,7 @@
                <div class="container">
                   <div class="row col-mb-30">
                      <div class="col-md-6 text-center text-md-start">
-                        Copyrights &copy; 2020 All Rights Reserved by Canvas Inc.<br>
+                        Copyrights &copy; <?php echo date('Y') ?> All Rights Reserved by Olinks Homes Inc.<br>
                         <div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
                      </div>
                      <div class="col-md-6 text-center text-md-end">
@@ -207,7 +207,7 @@
                            </a>
                         </div>
                         <div class="clear"></div>
-                        <i class="icon-envelope2"></i> <a href="https://themes.semicolonweb.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3950575f56795a58574f584a175a5654">[email&#160;protected]</a> <span class="middot">&middot;</span> <i class="icon-headphones"></i> +1-11-6541-6369 <span class="middot">&middot;</span> <i class="icon-skype2"></i> CanvasOnSkype
+                        <i class="icon-envelope2"></i> <a href="https://themes.semicolonweb.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3950575f56795a58574f584a175a5654">[email&#160;protected]</a> <span class="middot">&middot;</span> <i class="icon-headphones"></i> 0701211206 <span class="middot">&middot;</span> <i class="icon-skype2"></i> OlinksHomesOnSkype
                      </div>
                   </div>
                </div>
