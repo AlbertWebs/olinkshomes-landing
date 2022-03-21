@@ -104,7 +104,7 @@
                       </a>
                    </li>
                    <li class="menu-item">
-                      <a class="menu-link" href="{{url('/')}}/contact-us" data-href="#section-contact">
+                      <a class="menu-link" href="{{url('/')}}/contact-us">
                          <div>Contact</div>
                       </a>
                    </li>

@@ -15,4 +15,8 @@ class HomeController extends Controller
     public function index_page(){
         return view('front.home');
     }
+
+    public function contact_us(){
+        return view('front.contact-us');
+    }
 }

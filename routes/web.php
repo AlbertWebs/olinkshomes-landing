@@ -19,6 +19,7 @@ use App\Http\Controllers\DropzoneController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index_page'])->name('homepage');
+Route::get('/contact-us', [HomeController::class, 'contact_us'])->name('contact-us');
 
 Auth::routes();
 
