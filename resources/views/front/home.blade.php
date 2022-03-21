@@ -5,11 +5,13 @@
        <div class="swiper-container swiper-parent">
           <div class="swiper-wrapper">
 
+            {{-- Sliders --}}
              <div class="swiper-slide dark">
                 <div class="container">
                    <div class="slider-caption slider-caption-center">
                       <h2 style="color:#e95e28;" data-animate="fadeInUp">Olinks Homes</h2>
-                      <p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">Linking you to Luxurious Housing</p>
+                      {{-- <p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">Linking you to Luxurious Housing</p> --}}
+                      <small data-animate="fadeInUp" class="d-block text-uppercase ls3 h5 mt-3 pb-2">You Name it. We Have it.</small>
                       {{--  --}}
                       <h1 class="nott mb-4 mx-auto" style="max-width: 1000px; letter-spacing: -2px !important;">
 
@@ -18,8 +20,8 @@
                         </span>
 
 
+                        <a href="#" data-scrollto="#content" data-offset="100" class="dark one-page-arrow"><i class="icon-angle-down infinite animated fadeInDown"></i></a>
 
-                        <small data-animate="fadeInUp" class="d-block text-uppercase ls3 h5 mt-3 pb-2">You Name it. We Have it.</small>
                         </h1>
                       {{--  --}}
                    </div>
@@ -32,23 +34,15 @@
                    <div class="video-overlay" style="background-color: rgba(0,0,0,0.55);"></div>
                 </div>
              </div>
-             {{-- <div class="swiper-slide">
-                <div class="container">
-                   <div class="slider-caption">
-                      <h2 data-animate="fadeInUp">Great Performance</h2>
-                      <p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">You'll be surprised to see the Final Results of your Creation &amp; would crave for more.</p>
-                   </div>
-                </div>
-                <div class="swiper-slide-bg" style="background-image: url('{{asset('olinkshomes/images/slider/swiper/3.jpg')}}'); background-position: center top;"></div>
-             </div> --}}
+
           </div>
-          <div class="slider-arrow-left"><i class="icon-angle-left"></i></div>
-          <div class="slider-arrow-right"><i class="icon-angle-right"></i></div>
-          <div class="slide-number">
+          {{-- <div class="slider-arrow-left"><i class="icon-angle-left"></i></div>
+          <div class="slider-arrow-right"><i class="icon-angle-right"></i></div> --}}
+          {{-- <div class="slide-number">
              <div class="slide-number-current"></div>
              <span>/</span>
              <div class="slide-number-total"></div>
-          </div>
+          </div> --}}
        </div>
     </div>
  </section>
@@ -204,7 +198,7 @@
                    </div>
                 </div>
                 <div class="col-lg-6 min-vh-40">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127643.83205121818!2d36.684971086624145!3d-1.2494074167644187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f17fac21c0d31%3A0xe3e8bd5c82eca045!2sOlinks%20Homes%20ShowHouse!5e0!3m2!1sen!2ske!4v1647856120754!5m2!1sen!2ske" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127643.83205121818!2d36.684971086624145!3d-1.2494074167644187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f17fac21c0d31%3A0xe3e8bd5c82eca045!2sOlinks%20Homes%20ShowHouse!5e0!3m2!1sen!2ske!4v1647856120754!5m2!1sen!2ske" width="100%" height="100%" allowfullscreen loading="lazy"></iframe>
                 </div>
              </div>
              <div class="w-100">

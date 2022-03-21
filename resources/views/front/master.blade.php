@@ -31,17 +31,17 @@
                         <div class="row col-mb-50">
                            <div class="col-md-4">
                               <div class="widget clearfix">
-                                 <img src="images/footer-widget-logo.png" alt="Olinks Homes" class="footer-logo">
-                                 <p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp; <strong>Flexible</strong> Design Standards.</p>
+                                 {{-- <img src="images/footer-widget-logo.png" alt="Olinks Homes" class="footer-logo"> --}}
+                                 <p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp; <strong>Flexible</strong>High-End Design Standards.</p>
                                  <div style="background: url('images/world-map.png') no-repeat center center; background-size: 100%;">
                                     <address>
-                                       <strong>Headquarters:</strong><br>
-                                       795 Folsom Ave, Suite 600<br>
-                                       San Francisco, CA 94107<br>
+                                       <strong>ShowHouse</strong><br>
+                                       795 FolRiverside Gardens, Nairobi<br>
+                                       P.O BOX 00100-00100<br>
                                     </address>
                                     <abbr title="Phone Number"><strong>Phone:</strong></abbr> 0701211206<br>
                                     <abbr title="Fax"><strong>Fax:</strong></abbr> 0701211206<br>
-                                    <abbr title="Email Address"><strong>Email:</strong></abbr> <a href="https://themes.semicolonweb.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a0c9cec6cfe0c3c1ced6c1d38ec3cfcd">[email&#160;protected]</a>
+                                    <abbr title="Email Address"><strong>Email:</strong></abbr> <a href="mailto:hello@olinkshomes.com">hello@olinkshomes.com</a>
                                  </div>
                               </div>
                            </div>
@@ -117,7 +117,7 @@
                                  <div class="row">
                                     <div class="col-lg-6 bottommargin-sm">
                                        <div class="counter counter-small"><span data-from="50" data-to="15065421" data-refresh-interval="80" data-speed="3000" data-comma="true"></span></div>
-                                       <h5 class="mb-0">Total Downloads</h5>
+                                       <h5 class="mb-0">Total Projects</h5>
                                     </div>
                                     <div class="col-lg-6 bottommargin-sm">
                                        <div class="counter counter-small"><span data-from="100" data-to="18465" data-refresh-interval="50" data-speed="2000" data-comma="true"></span></div>
@@ -142,20 +142,27 @@
                            <div class="col-md-3 col-lg-12">
                               <div class="widget clearfix" style="margin-bottom: -20px;">
                                  <div class="row">
-                                    <div class="col-6 col-md-12 col-lg-6 clearfix bottommargin-sm">
+                                    <div class="col-4 col-md-12 col-lg-4 clearfix bottommargin-sm">
                                        <a href="#" class="social-icon si-dark si-colored si-facebook mb-0" style="margin-right: 10px;">
                                        <i class="icon-facebook"></i>
                                        <i class="icon-facebook"></i>
                                        </a>
-                                       <a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
+                                       <a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>Facebook</small></a>
                                     </div>
-                                    <div class="col-6 col-md-12 col-lg-6 clearfix">
-                                       <a href="#" class="social-icon si-dark si-colored si-rss mb-0" style="margin-right: 10px;">
-                                       <i class="icon-rss"></i>
-                                       <i class="icon-rss"></i>
+                                    <div class="col-4 col-md-12 col-lg-4 clearfix">
+                                       <a href="#" class="social-icon si-dark si-colored si-linkedin mb-0" style="margin-right: 10px;">
+                                       <i class="icon-linkedin"></i>
+                                       <i class="icon-linkedin"></i>
                                        </a>
-                                       <a href="#"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>to RSS Feeds</small></a>
+                                       <a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong><br>on Twitter</small></a>
                                     </div>
+                                    <div class="col-4 col-md-12 col-lg-4 clearfix">
+                                        <a href="#" class="social-icon si-dark si-colored si-twitter mb-0" style="margin-right: 10px;">
+                                        <i class="icon-twitter"></i>
+                                        <i class="icon-twitter"></i>
+                                        </a>
+                                        <a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong><br>on Twitter</small></a>
+                                     </div>
                                  </div>
                               </div>
                            </div>
@@ -168,7 +175,7 @@
                <div class="container">
                   <div class="row col-mb-30">
                      <div class="col-md-6 text-center text-md-start">
-                        Copyrights &copy; <?php echo date('Y') ?> All Rights Reserved by Olinks Homes Inc.<br>
+                        Copyrights &copy; <?php echo date('Y') ?> All Rights Reserved by Olinks Homes.<br>
                         <div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
                      </div>
                      <div class="col-md-6 text-center text-md-end">
@@ -207,7 +214,7 @@
                            </a>
                         </div>
                         <div class="clear"></div>
-                        <i class="icon-envelope2"></i> <a href="https://themes.semicolonweb.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3950575f56795a58574f584a175a5654">[email&#160;protected]</a> <span class="middot">&middot;</span> <i class="icon-headphones"></i> 0701211206 <span class="middot">&middot;</span> <i class="icon-skype2"></i> OlinksHomesOnSkype
+                        <i class="icon-envelope"></i> <a href="mailto:hello@olinkshomes.com">hello@olinkshomes.com</a> <span class="middot">&middot;</span> <i class="icon-headphones"></i> <a href="tel:0701211206">0701211206</a> <span class="middot">&middot;</span> <i class="icon-skype2"></i> OlinksHomesOnSkype
                      </div>
                   </div>
                </div>
