@@ -17,6 +17,8 @@ use App\Models\FAQ;
 
 use App\Models\Amenity;
 
+use App\Models\Gallery;
+
 use VideoThumbnail;
 
 use App\Models\How;
@@ -2239,6 +2241,72 @@ public function add_Plan(){
         return redirect('/admin/homes');
     }
 }
+public function editGallery($id){
+    $Gallery = Gallery::where('home_id',$id)->get();
+    foreach ($Gallery as $key => $value) {
+        $Home = Home::find($id);
+        $page_title = 'formfiletext';
+        $page_name = 'Edit Facts';
+        return view('admin.editGallery',compact('page_title','Home','page_name','Gallery'));
+    }
+}
+
+public function editFacts($id){
+    $Fact = Fact::find($id);
+    $Home = Home::find($Fact->property_id);
+    $page_title = 'formfiletext';
+    $page_name = 'Edit Facts';
+    return view('admin.editFacts',compact('page_title','Home','page_name','Fact'));
+}
+
+public function edit_Facts(Request $request, $id){
+    $updateDetails = array(
+        'living_room' => $request->living_room,
+        'garage' => $request->garage,
+        'dining_area' => $request->dining_area,
+        'bedroom' => $request->bedroom,
+        'bathroom' => $request->bathroom,
+        'gym' => $request->gym,
+        'garden' => $request->garden,
+        'parking' => $request->parking,
+        'property_id' => $request->property_id,
+    );
+    DB::table('facts')->where('id',$id)->update($updateDetails);
+    Session::flash('message', "Changes have been saved");
+    return Redirect::back();
+}
+
+public function editAmenities($id){
+    $Amenity = Amenity::find($id);
+    $Home = Home::find($Amenity->property_id);
+    $page_title = 'formfiletext';
+    $page_name = 'Edit Home';
+    return view('admin.editAmenities',compact('page_title','Home','page_name','Amenity'));
+}
+
+public function edit_Amenities(Request $request, $id){
+    $updateDetails = array(
+        'property_id' => $request->property_id,
+        'air_conditioning' => $request->air_conditioning,
+        'gym' => $request->gym,
+        'microwave' => $request->microwave,
+        'swimming_pool' => $request->swimming_pool,
+        'wifi' => $request->wifi,
+        'barbeque' => $request->barbeque,
+        'recreation' => $request->recreation,
+        'basketball_court' => $request->basketball_court,
+        'fireplace' => $request->fireplace,
+        'refrigerator' => $request->refrigerator,
+        'washer' => $request->washer,
+        'security' => $request->security,
+        'indoor_games' => $request->indoor_games,
+        'window_coverings' => $request->window_coverings,
+        'elevator' => $request->elevator,
+    );
+    DB::table('amenities')->where('id',$id)->update($updateDetails);
+    Session::flash('message', "Changes have been saved");
+    return Redirect::back();
+}
 
 
 public function homes_destroy(){
@@ -2376,6 +2444,8 @@ public function edit_Home(Request $request, $id){
    $slung = Str::slug($request->title);
 
 
+
+
     $updateDetails = array(
         'title' => $request->title,
         'slung' => $slung,
@@ -2393,9 +2463,7 @@ public function edit_Home(Request $request, $id){
         'price' =>$request->price,
         'price_raw' =>$request->price_raw,
         'code' =>$request->code,
-        'cat' =>$request->cat,
         'tag' =>$request->tags,
-        'sub_cat' =>$request->sub_cat,
     );
 
     DB::table('homes')->where('id',$id)->update($updateDetails);

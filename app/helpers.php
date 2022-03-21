@@ -44,4 +44,13 @@ function generateRandomString($length = 25) {
     }
     return $randomString;
 }
+
+function switcher($state){
+   if($state == 'on'){
+       $status = 'checked';
+   }else{
+       $status = 'unchecked';
+   }
+   return $status;
+}
 ?>

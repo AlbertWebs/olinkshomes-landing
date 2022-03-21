@@ -18,6 +18,7 @@ use App\Http\Controllers\DropzoneController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index_page'])->name('homepage');
 
 Auth::routes();
 
@@ -231,11 +232,22 @@ Route::get('admin/addHome',  [AdminsController::class, 'addHome'])->middleware('
 Route::post('admin/add_Home',  [AdminsController::class, 'add_Home'])->middleware('is_admin');
 Route::get('admin/addAmenities',  [AdminsController::class, 'addAmenities'])->middleware('is_admin');
 Route::post('admin/add_Amenities',  [AdminsController::class, 'add_Amenities'])->middleware('is_admin');
+Route::get('admin/editAmenities/{id}',  [AdminsController::class, 'editAmenities'])->middleware('is_admin');
+Route::post('admin/edit_Amenities/{id}',  [AdminsController::class, 'edit_Amenities'])->middleware('is_admin');
+Route::get('admin/editGallery/{id}',  [AdminsController::class, 'editGallery'])->middleware('is_admin');
+Route::post('admin/edit_Gallery/{id}',  [AdminsController::class, 'edit_Gallery'])->middleware('is_admin');
+
+
 
 Route::get('admin/addPlan',  [AdminsController::class, 'addPlan'])->middleware('is_admin');
 Route::post('admin/add_Plan',  [AdminsController::class, 'add_Plan'])->middleware('is_admin');
+
 Route::get('admin/addFacts',  [AdminsController::class, 'addFacts'])->middleware('is_admin');
 Route::post('admin/add_Facts',  [AdminsController::class, 'add_Facts'])->middleware('is_admin');
+Route::get('admin/editFacts/{id}',  [AdminsController::class, 'editFacts'])->middleware('is_admin');
+Route::post('admin/edit_Facts/{id}',  [AdminsController::class, 'edit_Facts'])->middleware('is_admin');
+
+
 Route::get('admin/addGallery',  [AdminsController::class, 'addGallery'])->middleware('is_admin');
 Route::post('admin/add_Gallery',  [AdminsController::class, 'add_Gallery'])->middleware('is_admin');
 
