@@ -42,6 +42,7 @@ return array(
     'App\\Models\\Photo' => $baseDir . '/app/Models/Photo.php',
     'App\\Models\\Privacy' => $baseDir . '/app/Models/Privacy.php',
     'App\\Models\\Product' => $baseDir . '/app/Models/Product.php',
+    'App\\Models\\Service' => $baseDir . '/app/Models/Service.php',
     'App\\Models\\Slider' => $baseDir . '/app/Models/Slider.php',
     'App\\Models\\Sub_Category' => $baseDir . '/app/Models/Sub_Category.php',
     'App\\Models\\Tag' => $baseDir . '/app/Models/Tag.php',

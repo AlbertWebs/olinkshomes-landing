@@ -594,6 +594,7 @@ class ComposerStaticInit38295998f1bd657e20e0be33c3678532
         'App\\Models\\Photo' => __DIR__ . '/../..' . '/app/Models/Photo.php',
         'App\\Models\\Privacy' => __DIR__ . '/../..' . '/app/Models/Privacy.php',
         'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
+        'App\\Models\\Service' => __DIR__ . '/../..' . '/app/Models/Service.php',
         'App\\Models\\Slider' => __DIR__ . '/../..' . '/app/Models/Slider.php',
         'App\\Models\\Sub_Category' => __DIR__ . '/../..' . '/app/Models/Sub_Category.php',
         'App\\Models\\Tag' => __DIR__ . '/../..' . '/app/Models/Tag.php',

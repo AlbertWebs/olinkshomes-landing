@@ -12,7 +12,7 @@
           </ol>
        </div>
     </section>
-    <div id="page-menu">
+    {{-- <div id="page-menu">
        <div id="page-menu-wrap">
           <div class="container">
              <div class="page-menu-row">
@@ -45,7 +45,7 @@
              </div>
           </div>
        </div>
-    </div>
+    </div> --}}
     <section id="map-overlay">
        <div class="container">
           <div class="row">

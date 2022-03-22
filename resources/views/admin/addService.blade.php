@@ -24,16 +24,16 @@
                 <ul>
                     <li><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
                     </li>
-                    <li class="active-bre"><a href="#"> Add New sERVICE</a>
+                    <li class="active-bre"><a href="#"> Add Service</a>
                     </li>
-                    <li class="page-back"><a href="{{url('/')}}/admin/categories"><i class="fa fa-backward" aria-hidden="true"></i> All Services</a>
+                    <li class="page-back"><a href="{{url('/')}}/admin/services"><i class="fa fa-backward" aria-hidden="true"></i> All Services</a>
                     </li>
                 </ul>
 
             </div>
             <div class="sb2-2-add-blog sb2-2-1">
-                <h2>Add New Service</h2>
-                <p>Categories Are Used In Both Blogs And General Content Classification</p>
+                <h2>Add Service</h2>
+                <p>List of service offered by Olinks Homes</p>
                 <center>
                     @if(Session::has('message'))
                                   <div class="alert alert-success">{{ Session::get('message') }}</div>
@@ -43,7 +43,7 @@
                                   <div class="alert alert-danger">{{ Session::get('messageError') }}</div>
                    @endif
                 </center>
-                <form method="POST" action="{{url('/')}}/admin/add_Category" enctype="multipart/form-data">
+                <form method="POST" action="{{url('/')}}/admin/add_Service" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="row">
                         <div class="input-field col s12">
@@ -51,7 +51,13 @@
                             <label for="list-title">Enter Service Title</label>
                         </div>
                     </div>
-                    
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="textarea1" name="meta" class="materialize-textarea validate"></textarea>
+                            <label for="list-title">Enter Service Meta Infomation</label>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="input-field col s12">
                             <textarea required id="article-ckeditor" name="content" class="materialilze-textarea" placeholder="content"></textarea>
@@ -91,11 +97,11 @@
                                 <div class="">
                                     <div class="input-field col s12">
                                         <div class="form-group">
-                                            <label>Add Category Featured Image</label>
+                                            <label>Add Service Featured Image</label>
                                             <div class="input-group">
                                                 <span class="input-group-btn">
                                                     <span class="btn btn-default btn-file">
-                                                        Browse… <input name="image" type="file" id="imgInp">
+                                                        Browse… <input name="thumbnail" type="file" id="imgInp">
                                                     </span>
                                                 </span>
                                                 <input type="text" class="form-control" readonly>
@@ -112,7 +118,7 @@
                             <div class="clearfix"></div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="submit" class="waves-effect waves-light btn-large" value="Add Category">
+                            <input type="submit" class="waves-effect waves-light btn-large" value="Add Service">
                         </div>
                     </div>
                 </form>

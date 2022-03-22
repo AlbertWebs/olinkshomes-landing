@@ -19,4 +19,10 @@ class HomeController extends Controller
     public function contact_us(){
         return view('front.contact-us');
     }
+
+    public function services(){
+        return view('front.services');
+    }
+
+
 }

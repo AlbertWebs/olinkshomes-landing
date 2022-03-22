@@ -20,6 +20,7 @@ use App\Http\Controllers\DropzoneController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index_page'])->name('homepage');
 Route::get('/contact-us', [HomeController::class, 'contact_us'])->name('contact-us');
+Route::get('/our-services', [HomeController::class, 'services'])->name('our-services');
 
 Auth::routes();
 
@@ -111,6 +112,15 @@ Route::post('admin/add_Slider', [AdminsController::class, 'add_Slider'])->middle
 Route::get('admin/editSlider/{id}', [AdminsController::class, 'editSlider'])->middleware('is_admin');
 Route::post('admin/edit_Slider/{id}', [AdminsController::class, 'edit_Slider'])->middleware('is_admin');
 Route::get('admin/deleteSlider/{id}', [AdminsController::class, 'deleteSlider'])->middleware('is_admin');
+
+
+// services
+Route::get('admin/services', [AdminsController::class, 'services'])->middleware('is_admin');
+Route::get('admin/addService', [AdminsController::class, 'addService'])->middleware('is_admin');
+Route::post('admin/add_Service', [AdminsController::class, 'add_Service'])->middleware('is_admin');
+Route::get('admin/editService/{id}', [AdminsController::class, 'editService'])->middleware('is_admin');
+Route::post('admin/edit_Service/{id}', [AdminsController::class, 'edit_Service'])->middleware('is_admin');
+Route::get('admin/deleteService/{id}', [AdminsController::class, 'deleteService'])->middleware('is_admin');
 
 // Banners
 Route::get('admin/banners', [AdminsController::class, 'banners'])->middleware('is_admin');
@@ -257,8 +267,8 @@ Route::post('admin/add_Gallery',  [AdminsController::class, 'add_Gallery'])->mid
 
 
 // AJAX REQUESTS
-
 Route::post('admin/deleteProductAjax', [AdminsController::class, 'deleteProductAjax'])->middleware('is_admin');
+Route::post('admin/deleteServiceAjax', [AdminsController::class, 'deleteServiceAjax'])->middleware('is_admin');
 Route::post('admin/addCategoryAjaxRequest', [AdminsController::class, 'addCategoryAjaxRequest'])->middleware('is_admin');
 Route::post('admin/deleteTagAjax', [AdminsController::class, 'deleteTagAjax'])->middleware('is_admin');
 Route::post('admin/deleteSubCategoryAjax', [AdminsController::class, 'deleteSubCategoryAjax'])->middleware('is_admin');

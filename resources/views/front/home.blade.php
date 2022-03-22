@@ -46,78 +46,8 @@
        </div>
     </div>
  </section>
- <header id="header" class="full-header">
-    <div id="header-wrap">
-       <div class="container">
-          <div class="header-row">
-             <div id="logo">
-                <a href="index.html" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="images/logo.png" alt="Olinks Homes"></a>
-                <a href="index.html" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo%402x.png" alt="Olinks Homes"></a>
-             </div>
-             <div class="header-misc">
-                <div id="top-search" class="header-misc-icon">
-                   <a href="#" id="top-search-trigger"><i class="icon-line-search"></i><i class="icon-line-cross"></i></a>
-                </div>
-             </div>
-             <div id="primary-menu-trigger">
-                <svg class="svg-trigger" viewBox="0 0 100 100">
-                   <path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path>
-                   <path d="m 30,50 h 40"></path>
-                   <path d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path>
-                </svg>
-             </div>
-             <nav class="primary-menu">
-                <ul class="menu-container one-page-menu" data-easing="easeInOutExpo" data-speed="1500">
-                   <li class="menu-item">
-                      <a class="menu-link" href="{{url('/')}}" data-href="#home">
-                         <div>Home</div>
-                      </a>
-                   </li>
-                   <li class="menu-item">
-                      <a class="menu-link" href="{{url('/')}}/about-us" data-href="#section-about">
-                         <div>About</div>
-                      </a>
-                   </li>
-                   <li class="menu-item">
-                      <a class="menu-link" href="{{url('/')}}/work" data-href="#section-work">
-                         <div>Work</div>
-                      </a>
-                   </li>
-                   <li class="menu-item">
-                      <a class="menu-link" href="{{url('/')}}/team" data-href="#section-team">
-                         <div>Team</div>
-                      </a>
-                   </li>
-                   <li class="menu-item">
-                      <a class="menu-link" href="{{url('/')}}/services" data-href="#section-services">
-                         <div>Services</div>
-                      </a>
-                   </li>
-                   <li class="menu-item">
-                      <a class="menu-link" href="https://shop.olinkshomes.com" data-href="#section-pricing">
-                         <div>Shop</div>
-                      </a>
-                   </li>
-                   <li class="menu-item">
-                      <a class="menu-link" href="https://homes.olinkshomes.com">
-                         <div>Homes</div>
-                      </a>
-                   </li>
-                   <li class="menu-item">
-                      <a class="menu-link" href="{{url('/')}}/contact-us">
-                         <div>Contact</div>
-                      </a>
-                   </li>
-                </ul>
-             </nav>
-             <form class="top-search-form" action="https://themes.semicolonweb.com/html/canvas/search.html" method="get">
-                <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter.." autocomplete="off">
-             </form>
-          </div>
-       </div>
-    </div>
-    <div class="header-wrap-clone"></div>
- </header>
+
+@include('front.menu')
 <section id="content">
     <div class="content-wrap">
        <section id="section-about" class="page-section">
@@ -201,6 +131,7 @@
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127643.83205121818!2d36.684971086624145!3d-1.2494074167644187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f17fac21c0d31%3A0xe3e8bd5c82eca045!2sOlinks%20Homes%20ShowHouse!5e0!3m2!1sen!2ske!4v1647856120754!5m2!1sen!2ske" width="100%" height="100%" allowfullscreen loading="lazy"></iframe>
                 </div>
              </div>
+             <hr>
              <div class="w-100">
                 <div class="row col-mb-50">
                    <div class="col-sm-6 col-lg-3">
@@ -223,16 +154,18 @@
                          </div>
                       </div>
                    </div>
+
                    <div class="col-sm-6 col-lg-3">
                       <div class="feature-box fbox-center fbox-bg fbox-plain">
                          <div class="fbox-icon">
                             <a href="#"><i class="icon-skype2"></i></a>
                          </div>
                          <div class="fbox-content">
-                            <h3>Make a Video Call<span class="subtitle">CanvasOnSkype</span></h3>
+                            <h3>Make a Video Call<span class="subtitle">OlinksHomesOnSkype</span></h3>
                          </div>
                       </div>
                    </div>
+
                    <div class="col-sm-6 col-lg-3">
                       <div class="feature-box fbox-center fbox-bg fbox-plain">
                          <div class="fbox-icon">

@@ -25,12 +25,12 @@
                     </li>
                     <li class="active-bre"><a href="#"> Services </a>
                     </li>
-                    <li class="page-back"><a href="{{url('/')}}/admin/addService"><i class="fa fa-pencil" aria-hidden="true"></i> Add New Category</a>
+                    <li class="page-back"><a href="{{url('/')}}/admin/addService"><i class="fa fa-pencil" aria-hidden="true"></i> Add New Service</a>
                     </li>
                 </ul>
             </div>
             <div class="sb2-2-1">
-                <h2>All Categories</h2>
+                <h2>All Services</h2>
                 <center>
                     @if(Session::has('message'))
                                   <div class="alert alert-success">{{ Session::get('message') }}</div>
@@ -46,19 +46,17 @@
                         <tr>
                             <th>#</th>
                             <th>Title</th>
-                            <th>Identifier</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-                        @foreach ($Category as $item)
+                        @foreach ($Service as $item)
                         <tr>
                             <td>{{$item->id}}</td>
                             <td>{{$item->title}}</td>
-                            <td>{{$item->identifier}}</td>
-                            <td><a href="{{url('/')}}/admin/editCategories/{{$item->id}}" class="sb2-2-1-edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            <td><a href="{{url('/')}}/admin/editService/{{$item->id}}" class="sb2-2-1-edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             </td>
                             <td><a onclick="archiveFunction{{$item->id}}()" href="#" class="sb2-2-1-edit"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                             </td>
@@ -78,7 +76,7 @@
                                         if (willDelete) {
                                             //do the ajax stuff.
                                             $.ajax({
-                                                url: "{{url('/')}}/admin/deleteCategoryAjax",
+                                                url: "{{url('/')}}/admin/deleteServiceAjax",
                                                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                                                 type: "POST",
                                                 data: {id: {{$item->id}}},
