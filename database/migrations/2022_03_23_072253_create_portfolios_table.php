@@ -21,6 +21,9 @@ class CreatePortfoliosTable extends Migration
             $table->text('meta')->nullable();
             $table->text('slung')->nullable();
             $table->text('thumbnail')->nullable();
+            $table->text('image_one')->nullable();
+            $table->text('image_two')->nullable();
+            $table->text('image_three')->nullable();
             $table->timestamps();
         });
     }

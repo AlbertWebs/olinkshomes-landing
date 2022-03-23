@@ -24,7 +24,7 @@
                 <ul>
                     <li><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
                     </li>
-                    <li class="active-bre"><a href="#"> Add New sERVICE</a>
+                    <li class="active-bre"><a href="#"> Add New Category</a>
                     </li>
                     <li class="page-back"><a href="{{url('/')}}/admin/categories"><i class="fa fa-backward" aria-hidden="true"></i> All Services</a>
                     </li>
@@ -32,7 +32,7 @@
 
             </div>
             <div class="sb2-2-add-blog sb2-2-1">
-                <h2>Add New Service</h2>
+                <h2>Add New Categorgy</h2>
                 <p>Categories Are Used In Both Blogs And General Content Classification</p>
                 <center>
                     @if(Session::has('message'))
@@ -51,7 +51,19 @@
                             <label for="list-title">Enter Service Title</label>
                         </div>
                     </div>
-                    
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select name="identifier" class="mdb-select">
+                                <option value="" disabled selected>identifier</option>
+                                <option value="web">web</option>
+                                <option value="home">home</option>
+                                <option value="shop">shop</option>
+                            </select>
+                            <label>Select identifier</label>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="input-field col s12">
                             <textarea required id="article-ckeditor" name="content" class="materialilze-textarea" placeholder="content"></textarea>

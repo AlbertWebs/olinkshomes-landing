@@ -28,4 +28,10 @@ class HomeController extends Controller
         return view('front.work');
     }
 
+    public function about_us(){
+        return view('front.about');
+    }
+
+
+
 }

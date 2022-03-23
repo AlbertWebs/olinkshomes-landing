@@ -26,7 +26,7 @@
                       </a>
                    </li>
                    <li class="menu-item">
-                      <a class="menu-link" href="{{url('/')}}/about-us" data-href="#section-about">
+                      <a class="menu-link" href="{{url('/')}}/about-us" data-href="#section-pricing">
                          <div>About</div>
                       </a>
                    </li>

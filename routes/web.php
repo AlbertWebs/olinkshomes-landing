@@ -22,6 +22,7 @@ Route::get('/home', [HomeController::class, 'index_page'])->name('homepage');
 Route::get('/contact-us', [HomeController::class, 'contact_us'])->name('contact-us');
 Route::get('/our-services', [HomeController::class, 'services'])->name('our-services');
 Route::get('/our-work', [HomeController::class, 'work'])->name('our-work');
+Route::get('/about-us', [HomeController::class, 'about_us'])->name('about-us');
 
 Auth::routes();
 
