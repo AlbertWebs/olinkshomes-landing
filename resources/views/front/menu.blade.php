@@ -41,7 +41,7 @@
                         </a>
                     </li>
                    <li class="menu-item">
-                      <a class="menu-link" href="{{url('/')}}/work" data-href="#section-work">
+                      <a class="menu-link" href="{{url('/')}}/our-work">
                          <div>Work</div>
                       </a>
                    </li>
@@ -51,7 +51,7 @@
                          <div>Services</div>
                       </a>
                    </li>
-                   <li class="menu-item mega-menu">
+                   {{-- <li class="menu-item mega-menu">
                         <a class="menu-link" href="#">
                         <div>Services</div>
                         </a>
@@ -483,7 +483,7 @@
                             </div>
                         </div>
                         </div>
-                    </li>
+                    </li> --}}
                    <li class="menu-item">
                       <a class="menu-link" href="https://shop.olinkshomes.com" data-href="#section-pricing">
                          <div>Shop</div>

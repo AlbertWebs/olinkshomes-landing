@@ -24,5 +24,8 @@ class HomeController extends Controller
         return view('front.services');
     }
 
+    public function work(){
+        return view('front.work');
+    }
 
 }

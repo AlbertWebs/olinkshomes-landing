@@ -106,9 +106,22 @@
             <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-folder" aria-hidden="true"></i> Services </a>
                 <div class="collapsible-body left-sub-menu">
                     <ul>
-                        <li><a href="{{url('/')}}/admin/categories">All Services </a>
+                        <li><a href="{{url('/')}}/admin/services">All Services </a>
                         </li>
-                        <li><a href="{{url('/')}}/admin/addCategory">Add Services</a>
+                        <li><a href="{{url('/')}}/admin/addService">Add Services</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            {{--  --}}
+
+            {{--  --}}
+            <li><a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-folder" aria-hidden="true"></i> Portfolios </a>
+                <div class="collapsible-body left-sub-menu">
+                    <ul>
+                        <li><a href="{{url('/')}}/admin/portfolios">All Portfolios </a>
+                        </li>
+                        <li><a href="{{url('/')}}/admin/addPortfolio">Add Portfolio</a>
                         </li>
                     </ul>
                 </div>

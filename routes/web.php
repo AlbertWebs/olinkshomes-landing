@@ -21,6 +21,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index_page'])->name('homepage');
 Route::get('/contact-us', [HomeController::class, 'contact_us'])->name('contact-us');
 Route::get('/our-services', [HomeController::class, 'services'])->name('our-services');
+Route::get('/our-work', [HomeController::class, 'work'])->name('our-work');
 
 Auth::routes();
 
@@ -61,6 +62,14 @@ Route::get('admin/editPrivacy/{id}', [AdminsController::class, 'editPrivacy'])->
 Route::post('admin/add_privacy', [AdminsController::class, 'add_privacy'])->middleware('is_admin');
 Route::post('admin/edit_privacy/{id}', [AdminsController::class, 'edit_privacy'])->middleware('is_admin');
 Route::get('admin/delete_privacy/{id}', [AdminsController::class, 'delete_privacy'])->middleware('is_admin');
+
+// Portfolio
+Route::get('admin/portfolios', [AdminsController::class, 'portfolios'])->middleware('is_admin');
+Route::get('admin/addPortfolio', [AdminsController::class, 'addPortfolio'])->middleware('is_admin');
+Route::get('admin/editPortfolio/{id}', [AdminsController::class, 'editPortfolio'])->middleware('is_admin');
+Route::post('admin/add_portfolio', [AdminsController::class, 'add_portfolio'])->middleware('is_admin');
+Route::post('admin/edit_portfolio/{id}', [AdminsController::class, 'edit_portfolio'])->middleware('is_admin');
+Route::get('admin/delete_portfolio/{id}', [AdminsController::class, 'delete_portfolio'])->middleware('is_admin');
 
 // Frequently Asked Questions
 Route::get('admin/faq', [AdminsController::class, 'faq'])->middleware('is_admin');
@@ -262,12 +271,15 @@ Route::post('admin/edit_Facts/{id}',  [AdminsController::class, 'edit_Facts'])->
 Route::get('admin/addGallery',  [AdminsController::class, 'addGallery'])->middleware('is_admin');
 Route::post('admin/add_Gallery',  [AdminsController::class, 'add_Gallery'])->middleware('is_admin');
 
+Route::get('admin/strtolower',  [AdminsController::class, 'strtolower'])->middleware('is_admin');
+
 
 
 
 
 // AJAX REQUESTS
 Route::post('admin/deleteProductAjax', [AdminsController::class, 'deleteProductAjax'])->middleware('is_admin');
+Route::post('admin/deletePortfolioAjax', [AdminsController::class, 'deletePortfolioAjax'])->middleware('is_admin');
 Route::post('admin/deleteServiceAjax', [AdminsController::class, 'deleteServiceAjax'])->middleware('is_admin');
 Route::post('admin/addCategoryAjaxRequest', [AdminsController::class, 'addCategoryAjaxRequest'])->middleware('is_admin');
 Route::post('admin/deleteTagAjax', [AdminsController::class, 'deleteTagAjax'])->middleware('is_admin');

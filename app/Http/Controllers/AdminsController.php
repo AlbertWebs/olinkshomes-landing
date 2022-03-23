@@ -17,6 +17,8 @@ use App\Models\FAQ;
 
 use App\Models\Amenity;
 
+use App\Models\Portfolio;
+
 use App\Models\Service;
 
 use App\Models\Gallery;
@@ -1472,23 +1474,24 @@ class AdminsController extends Controller
         DB::table('terms')->where('id',$id)->delete();
         return response()->json(['success'=>'Deleted Successfully!']);
     }
-
     public function deleteHowAjax(Request $request){
         activity()->log('Evoked a delete How it works Request');
         $id = $request->id;
         DB::table('hows')->where('id',$id)->delete();
         return response()->json(['success'=>'Deleted Successfully!']);
     }
-
-
+    public function deletePortfolioAjax(Request $request){
+        activity()->log('Evoked a delete How it works Request');
+        $id = $request->id;
+        DB::table('portfolios')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
     public function deleteCoursesAjax(Request $request){
         activity()->log('Evoked a delete How it works Request');
         $id = $request->id;
         DB::table('courses')->where('id',$id)->delete();
         return response()->json(['success'=>'Deleted Successfully!']);
     }
-
-
     public function deleteTopicsAjax(Request $request){
         activity()->log('Evoked a delete How it works Request');
         $id = $request->id;
@@ -2582,7 +2585,94 @@ public function deleteService($id){
     return Redirect::back();
 }
 
+public function strtolower(){
+    $Services = Service::all();
+    foreach($Services as $Ser){
+       $newTitle = strtolower($Ser->title);
+       $updateDetails = array(
+           'title' => $newTitle,
+       );
 
+       DB::table('services')->where('id',$Ser->id)->update($updateDetails);
+    }
+}
+//
+public function portfolios(){
+    activity()->log('Accessed All Categories');
+    $Portfolio = Portfolio::all();
+    $page_title = 'list';
+    $page_name = 'Categories';
+    return view('admin.portfolios',compact('page_title','Portfolio','page_name'));
+}
+
+public function addPortfolio(){
+    activity()->log('Accessed Add Portfolio Page');
+    $page_title = 'formfiletext';
+    $page_name = 'Add Portfolio';
+    return view('admin.addPortfolio',compact('page_title','page_name'));
+}
+
+public function add_Portfolio(Request $request){
+    activity()->log('Evoked add Portfolio Operation');
+    $path = 'uploads/portfolios';
+    if(isset($request->image)){
+        $file = $request->file('image');
+        $filename = $file->getClientOriginalName();
+        $file->move($path, $filename);
+        $image = $filename;
+    }else{
+        $image = "0";
+    }
+    $Portfolio = new Portfolio;
+    $Portfolio->title = $request->title;
+    $Portfolio->meta = $request->meta;
+    $Portfolio->slung = Str::slug($request->title);
+    $Portfolio->content = $request->content;
+    $Portfolio->thumbnail = $image;
+    $Portfolio->save();
+    Session::flash('message', "Portfolio Has Been Added");
+    return Redirect::back();
+}
+
+public function editPortfolio($id){
+    activity()->log('Access Edit Portfolio ID number '.$id.' ');
+    $Portfolio = Portfolio::find($id);
+    $page_title = 'formfiletext';
+    $page_name = 'Edit Home Page Slider';
+    return view('admin.editPortfolio',compact('page_title','Portfolio','page_name'));
+}
+
+public function edit_Portfolio(Request $request, $id){
+    activity()->log('Evoked Edit Portfolio For Portfolio ID number '.$id.' ');
+    $path = 'uploads/portfolios';
+        if(isset($request->image)){
+            $file = $request->file('image');
+            $filename = $file->getClientOriginalName();
+            $file->move($path, $filename);
+            $image = $filename;
+        }else{
+            $image = $request->image_cheat;
+        }
+
+    $updateDetails = array(
+        'title'=>$request->title,
+        'meta'=>$request->meta,
+        'slung' => Str::slug($request->title),
+        'content'=>$request->content,
+        'thumbnail'=>$image
+
+    );
+    DB::table('portfolios')->where('id',$id)->update($updateDetails);
+    Session::flash('message', "Changes have been saved");
+    return Redirect::back();
+}
+
+public function deletePortfolio($id){
+    activity()->log('Deleted Portfolio ID number '.$id.' ');
+    DB::table('portfolios')->where('id',$id)->delete();
+    return Redirect::back();
+}
+//
 
 }
 
