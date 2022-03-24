@@ -23,6 +23,8 @@ Route::get('/contact-us', [HomeController::class, 'contact_us'])->name('contact-
 Route::get('/our-services', [HomeController::class, 'services'])->name('our-services');
 Route::get('/our-work', [HomeController::class, 'work'])->name('our-work');
 Route::get('/about-us', [HomeController::class, 'about_us'])->name('about-us');
+Route::get('/our-team', [HomeController::class, 'team'])->name('our-team');
+
 
 Auth::routes();
 

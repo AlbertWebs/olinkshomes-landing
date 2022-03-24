@@ -7657,3 +7657,9 @@ readers do not read off random characters that represent icons */
         width:33.33% !important;
     }
 }
+
+.full-header{
+    max-height:210px !important;
+}
+
+

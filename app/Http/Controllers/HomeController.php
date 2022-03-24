@@ -32,6 +32,11 @@ class HomeController extends Controller
         return view('front.about');
     }
 
+    public function team(){
+        return view('front.team');
+    }
+
+
 
 
 }

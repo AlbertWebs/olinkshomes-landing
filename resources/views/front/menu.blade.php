@@ -3,8 +3,8 @@
        <div class="container">
           <div class="header-row">
              <div id="logo">
-                <a href="index.html" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="images/logo.png" alt="Olinks Homes"></a>
-                <a href="index.html" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo%402x.png" alt="Olinks Homes"></a>
+                <a href="{{url('/')}}" class="standard-logo" data-dark-logo="{{url('/')}}/olinkshomes/images/OlinksHomesLogoDesign-29.png"><img src="{{url('/')}}/olinkshomes/images/OlinksHomesLogoDesign-29.png" alt="Olinks Homes"></a>
+                <a href="{{url('/')}}" class="retina-logo" data-dark-logo="{{url('/')}}/olinkshomes/images/OlinksHomesLogoDesign-29.png"><img  src="{{url('/')}}/olinkshomes/images/OlinksHomesLogoDesign-29.png" alt="Olinks Homes"></a>
              </div>
              <div class="header-misc">
                 <div id="top-search" class="header-misc-icon">
@@ -36,7 +36,7 @@
                     </a>
                    </li>
                     <li class="menu-item">
-                        <a class="menu-link" href="{{url('/')}}/team" data-href="#section-team">
+                        <a class="menu-link" href="{{url('/')}}/our-team" data-href="#section-team">
                         <div>Partners</div>
                         </a>
                     </li>
@@ -507,5 +507,5 @@
           </div>
        </div>
     </div>
-    <div class="header-wrap-clone"></div>
+    <div class="header-wrap-clone" style="max-height:100px !important"></div>
  </header>
