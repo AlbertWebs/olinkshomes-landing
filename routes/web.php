@@ -234,6 +234,8 @@ Route::post('admin/add_Tag',  [AdminsController::class, 'add_Tag'])->middleware(
 
 
 Route::get('admin/dropzones/{id}', [DropzoneController::class, 'dropzones']);
+Route::get('admin/dropzonese/{id}', [DropzoneController::class, 'dropzonese']);
+
 Route::get('admin/dropzone/{id}', [DropzoneController::class, 'dropzone']);
 Route::post('admin/dropzone/store', [DropzoneController::class, 'dropzoneStore'])->name('dropzone.store');
 Route::post('admin/dropzones/store', [DropzoneController::class, 'dropzoneStores'])->name('dropzones.store');
@@ -310,3 +312,8 @@ Route::post('admin/deleteHowAjax', [AdminsController::class, 'deleteHowAjax'])->
 Route::post('admin/deleteCoursesAjax', [AdminsController::class, 'deleteCoursesAjax'])->middleware('is_admin');
 Route::post('admin/deleteTopicsAjax', [AdminsController::class, 'deleteTopicsAjax'])->middleware('is_admin');
 Route::post('admin/deleteSignalsAjax', [AdminsController::class, 'deleteSignalsAjax'])->middleware('is_admin');
+Route::post('admin/deleteHomeAjax', [AdminsController::class, 'deleteHomeAjax'])->middleware('is_admin');
+
+
+Route::get('admin/destroy', [AdminsController::class, 'destroy'])->middleware('is_admin');
+

@@ -83,7 +83,7 @@
                 </div>
                 <hr>
                 {{--  --}}
-                <iframe src="{{url('/')}}/admin/dropzones/{{$Home->id}}" style="min-height:500px" height="100%" width="100%"></iframe>
+                <iframe src="{{url('/')}}/admin/dropzonese/{{$Home->id}}" style="min-height:500px" height="100%" width="100%"></iframe>
                 {{--  --}}
                 <div class="row">
                     <div class="input-field col s12">

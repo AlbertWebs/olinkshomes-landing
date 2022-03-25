@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+@foreach ($Home as $home)
 <head>
     <title>Drop Zone</title>
     <meta name="_token" content="{{csrf_token()}}"/>
@@ -11,11 +12,11 @@
 <body>
 <div class="container">
 
-    <h3 class="text-center" style="margin-top: 50px;">Drop {{$Product->name}} Images</h3><br>
+    <h3 class="text-center" style="margin-top: 50px;">Drop {{$home->title}} Images</h3><br>
     <form method="post" action="{{url('admin/dropzones/store')}}" enctype="multipart/form-data"
           class="dropzone" id="dropzone">
         @csrf
-        <input type="hidden" name="product_id" value="{{$Product->id}}">
+        <input type="hidden" name="product_id" value="{{$home->id}}">
     </form>
     <script type="text/javascript">
         Dropzone.options.dropzone =
@@ -59,4 +60,5 @@
             };
     </script>
 </body>
+@endforeach
 </html>

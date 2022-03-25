@@ -2222,11 +2222,7 @@ public function edit_Amenities(Request $request, $id){
 }
 
 
-public function homes_destroy(){
-    // Destroy Session
-    Session::forget('property');
-    return redirect('/admin/homes');
-}
+
 
 // Homes
 public function addHome(){
@@ -2242,7 +2238,7 @@ public function add_Home(Request $request){
         $file = $request->file('fb_pixels');
         /** Renaming Edits */
         $extension = $file->getClientOriginalExtension();
-        $image_main_temp = $request->name.'-fb_pixels.'.$extension;
+        $image_main_temp = $request->title.'-fb_pixels.'.$extension;
         $fb_pixels = str_replace(' ', '-',$image_main_temp);
         $file->move($path, $fb_pixels);
         /* Renaming Edits Ends*/
@@ -2304,7 +2300,7 @@ public function add_Home(Request $request){
     }
     //Additional images
 
-    $slung = Str::slug($request->name);
+    $slung = Str::slug($request->title);
     $Home = new Home;
     $Home->title = $request->title;
     $Home->google_product_category = $request->google_product_category;
@@ -2352,7 +2348,7 @@ public function edit_Home(Request $request, $id){
         /** Renaming Edits */
         $random = rand(100,1000);
         $extension = $file->getClientOriginalExtension();
-        $HomeName = str_replace(' ','-',$request->name);
+        $HomeName = str_replace(' ','-',$request->title);
         $image_main_temp = $random.'-fb_pixels.'.$extension;
         $fb_pixels = str_replace('  ', '-',$image_main_temp);
         $file->move($path, $fb_pixels);
@@ -2672,7 +2668,20 @@ public function deletePortfolio($id){
     DB::table('portfolios')->where('id',$id)->delete();
     return Redirect::back();
 }
-//
+//\
+
+public function destroy(){
+    Session::forget('property');
+    session()->forget('property');
+    return Redirect::back();
+}
+
+public function homes_destroy(){
+    // Destroy Session
+    Session::forget('property');
+    session()->forget('property');
+    return redirect('/admin/homes');
+}
 
 }
 

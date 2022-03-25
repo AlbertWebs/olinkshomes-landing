@@ -10,6 +10,10 @@ use App\Models\Product;
 
 use App\Models\Gallery;
 
+use App\Models\Home;
+
+use Session;
+
 class DropzoneController extends Controller
 {
 
@@ -27,11 +31,23 @@ class DropzoneController extends Controller
     }
 
     public function dropzones($id)
-    {
+    {$slung = Session::get('property');
+        $Home = Home::where('slung',$slung)->get();
         $Product = Product::find($id);
         $page_name = "";
         $page_title = "";
-        return view('admin.dropzones', compact('page_name','page_title','Product'));
+
+        return view('admin.dropzones', compact('page_name','page_title','Product','Home'));
+    }
+
+    public function dropzonese($id)
+    {
+        $Home = Home::where('id',$id)->get();
+        $Product = Product::find($id);
+        $page_name = "";
+        $page_title = "";
+
+        return view('admin.dropzones', compact('page_name','page_title','Product','Home'));
     }
 
 
@@ -56,7 +72,8 @@ class DropzoneController extends Controller
         $Photos->product_id = $request->product_id;
         $Photos->path = public_path('uploads/products');
         $Photos->save();
-
+        Session::forget('property');
+        session()->forget('property');
         return response()->json(['success'=>$imageName]);
     }
 
@@ -75,8 +92,15 @@ class DropzoneController extends Controller
         $Photos->home_id = $request->product_id;
         $Photos->path = public_path('uploads/homes');
         $Photos->save();
+        // Destroy Sessions
+        Session::forget('property');
+        session()->forget('property');
         return response()->json(['success'=>$imageName]);
     }
+
+
+
+
 
 
 
