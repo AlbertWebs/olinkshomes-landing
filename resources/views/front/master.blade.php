@@ -30,6 +30,12 @@
                 </script>
         <!--End of Tawk.to Script-->
         {{--  --}}
+        <style>
+            .slider-caption-bg {
+                left: 20px;
+                bottom: 20px;
+            }
+        </style>
    </head>
    <body class="stretched">
       <div id="wrapper" class="clearfix">

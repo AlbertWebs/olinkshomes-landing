@@ -48,7 +48,7 @@
 
                    <li class="menu-item">
                       <a class="menu-link" href="{{url('/')}}/our-services" >
-                         <div>Services</div>
+                         <div><i class="icon-line2-wrench"></i> Services</div>
                       </a>
                    </li>
                    {{-- <li class="menu-item mega-menu">
@@ -485,13 +485,13 @@
                         </div>
                     </li> --}}
                    <li class="menu-item">
-                      <a class="menu-link" href="https://shop.olinkshomes.com" data-href="#section-pricing">
-                         <div>Shop</div>
+                      <a target="new" class="menu-link" href="https://shop.olinkshomes.com" data-href="#section-pricing">
+                         <div><i class="icon-line-shopping-cart"></i> Shop</div>
                       </a>
                    </li>
                    <li class="menu-item">
-                      <a class="menu-link" href="https://homes.olinkshomes.com">
-                         <div>Homes</div>
+                      <a target="new" class="menu-link" href="https://homes.olinkshomes.com">
+                         <div><i class="icon-home1"></i> Homes</div>
                       </a>
                    </li>
                    <li class="menu-item">
