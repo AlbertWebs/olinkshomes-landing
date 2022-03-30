@@ -80,7 +80,7 @@
 
                     <a href="#" class="button button-3d ms-0 bottommargin-sm">Learn More</a>
                  </div>
-                 <div class="col-lg-6"> <p>Holisticly incubate enterprise users whereas just in time sources. Rapidiously transition performance based e-business for bricks-and-clicks methodologies. Intrinsicly network quality interfaces rather than customer directed e-services. Rapidiously implement out-of-the-box content with alternative data. Collaboratively simplify seamless initiatives through sustainable infomediaries. Holisticly aggregate bleeding-edge expertise.</p>
+                 <div class="col-lg-6">
 
                     <div class="fslider flex-thumb-grid grid-6" data-pagi="false" data-arrows="false" data-thumbs="true">
                        <div class="flexslider">
