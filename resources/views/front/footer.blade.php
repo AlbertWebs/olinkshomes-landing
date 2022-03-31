@@ -26,12 +26,12 @@
                          <ul>
                             <li><a href="https://codex.wordpress.org/">About Us</a></li>
                             <li><a href="https://wordpress.org/support/forum/requests-and-feedback">Services</a></li>
-                            <li><a href="https://wordpress.org/extend/plugins/">Porfolio</a></li>
-                            <li><a href="https://wordpress.org/support/">Contact Us</a></li>
-                            <li><a href="https://wordpress.org/extend/themes/">Our Team</a></li>
-                            <li><a href="https://wordpress.org/news/">Partners</a></li>
-                            <li><a href="https://planet.wordpress.org/">Homes</a></li>
-                            <li><a href="https://planet.wordpress.org/">Shop</a></li>
+                            <li><a href="{{url('/')}}/our-work">Porfolio</a></li>
+                            <li><a href="{{url('/')}}/contact-us">Contact Us</a></li>
+                            <li><a href="{{url('/')}}/our-team">Our Team</a></li>
+                            <li><a href="{{url('/')}}/our-team">Partners</a></li>
+                            <li><a href="https://homes.olinkshomes.com/">Homes</a></li>
+                            <li><a href="https://shop.olinkshomes.com/">Shop</a></li>
                          </ul>
                       </div>
                    </div>
