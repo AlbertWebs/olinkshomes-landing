@@ -57,7 +57,7 @@
                                <div class="grid-inner row">
                                   <div class="col">
                                      <div class="entry-title">
-                                        <h4><a href="#">Elit Assumenda vel amet dolorum quasi</a></h4>
+                                        <h4><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h4>
                                      </div>
                                      <div class="entry-meta">
                                         <ul>
@@ -71,7 +71,7 @@
                                <div class="grid-inner row">
                                   <div class="col">
                                      <div class="entry-title">
-                                        <h4><a href="#">Debitis nihil placeat, illum est nisi</a></h4>
+                                        <h4><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h4>
                                      </div>
                                      <div class="entry-meta">
                                         <ul>
@@ -123,21 +123,21 @@
                                <i class="icon-facebook"></i>
                                <i class="icon-facebook"></i>
                                </a>
-                               <a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>Facebook</small></a>
+                               <a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong></small></a>
                             </div>
                             <div class="col-4 col-md-12 col-lg-4 clearfix">
                                <a href="#" class="social-icon si-dark si-colored si-linkedin mb-0" style="margin-right: 10px;">
                                <i class="icon-linkedin"></i>
                                <i class="icon-linkedin"></i>
                                </a>
-                               <a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong><br>on Twitter</small></a>
+                               <a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong></small></a>
                             </div>
                             <div class="col-4 col-md-12 col-lg-4 clearfix">
                                 <a href="#" class="social-icon si-dark si-colored si-twitter mb-0" style="margin-right: 10px;">
                                 <i class="icon-twitter"></i>
                                 <i class="icon-twitter"></i>
                                 </a>
-                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong><br>on Twitter</small></a>
+                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong></small></a>
                              </div>
                          </div>
                       </div>
