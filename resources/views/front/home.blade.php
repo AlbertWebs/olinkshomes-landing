@@ -252,7 +252,7 @@
                   <div class="oc-item">
                      <div class="team">
                         <div class="team-image">
-                           <img src="{{asset('olinkshomes/demos/construction/images/team/1.jpg')}}" alt="John Doe">
+                           <img src="{{asset('olinkshomes/images/team/teams.jpg')}}" alt="John Doe">
                         </div>
                         <div class="team-desc">
                            <div class="team-title">
@@ -267,7 +267,7 @@
                   <div class="oc-item">
                      <div class="team">
                         <div class="team-image">
-                           <img src="{{asset('olinkshomes/demos/construction/images/team/2.jpg')}}" alt="Josh Thompson">
+                           <img src="{{asset('olinkshomes/images/team/team.jpg')}}" alt="Josh Thompson">
                         </div>
                         <div class="team-desc">
                            <div class="team-title">
@@ -282,7 +282,7 @@
                   <div class="oc-item">
                      <div class="team">
                         <div class="team-image">
-                           <img src="{{asset('olinkshomes/demos/construction/images/team/3.jpg')}}" alt="Mary Jane">
+                           <img src="{{asset('olinkshomes/images/team/teams.jpg')}}" alt="Mary Jane">
                         </div>
                         <div class="team-desc">
                            <div class="team-title">
@@ -297,7 +297,7 @@
                   <div class="oc-item">
                      <div class="team">
                         <div class="team-image">
-                           <img src="{{asset('olinkshomes/demos/construction/images/team/5.jpg')}}" alt="Mary Jane">
+                           <img src="{{asset('olinkshomes/images/team/team.jpg')}}" alt="Mary Jane">
                         </div>
                         <div class="team-desc">
                            <div class="team-title">
@@ -312,7 +312,7 @@
                   <div class="oc-item">
                      <div class="team">
                         <div class="team-image">
-                           <img src="{{asset('olinkshomes/demos/construction/images/team/4.jpg')}}" alt="Mary Jane">
+                           <img src="{{asset('olinkshomes/images/team/teams.jpg')}}" alt="Mary Jane">
                         </div>
                         <div class="team-desc">
                            <div class="team-title">
@@ -327,7 +327,7 @@
                </div>
             </div>
             <div class="col-lg-5">
-               <h4>Clients Overview</h4>
+               <h4>Partners</h4>
                <p>We prize our Clients more than everything else. We strive to provide Quality Services to all our Clients on a Priority Basis. You are invited to join our Clients List and enjoy our Services. <a href="#">See more...</a></p>
                <ul class="clients-grid grid-2 grid-sm-3 mb-0">
                   <li class="grid-item" style="padding: 20px;"><a href="#"><img src="{{asset('olinkshomes/images/clients/1.png')}}" alt="Clients"></a></li>
@@ -357,7 +357,7 @@
                      <span class="ls1">Five Points that define Our Reliability.</span>
                   </div>
                   <ul class="iconlist iconlist-large iconlist-color">
-                     <li><i class="icon-ok"></i> Market Leader since 1915</li>
+                     <li><i class="icon-ok"></i> Market Leader since 1977</li>
                      <li><i class="icon-ok"></i> Positive Results within Deadlines</li>
                      <li><i class="icon-ok"></i> 100% Reliability &amp; Guarantee</li>
                      <li><i class="icon-ok"></i> Dedicated Professional Team of 500+</li>

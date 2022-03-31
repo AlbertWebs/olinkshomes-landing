@@ -13,6 +13,14 @@
        </div>
     </section>
 
+    <section id="slider" class="slider-element boxed-slider">
+        <div class="container">
+           <a href="#" class="d-block">
+           <img class="w-100 rounded" src="{{asset('olinkshomes/demos/construction/images/team/architecture-construction-team-blue-prints-project-members-workers-74607653.jpg')}}" alt="Olinks Team">
+           </a>
+        </div>
+     </section>
+
     <section id="content">
         <div class="content-wrap">
            <div id="rev_slider_285_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.1.4">

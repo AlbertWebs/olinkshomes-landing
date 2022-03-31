@@ -31,7 +31,7 @@
                       </a>
                    </li>
                    <li class="menu-item">
-                    <a class="menu-link" href="{{url('/')}}/team" data-href="#section-team">
+                    <a class="menu-link" href="{{url('/')}}/our-team">
                        <div>Team</div>
                     </a>
                    </li>
