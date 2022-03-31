@@ -40,11 +40,11 @@
                         <div>Partners</div>
                         </a>
                     </li>
-                   <li class="menu-item">
+                   {{-- <li class="menu-item">
                       <a class="menu-link" href="{{url('/')}}/our-work">
                          <div>Work</div>
                       </a>
-                   </li>
+                   </li> --}}
 
                    <li class="menu-item">
                       <a class="menu-link" href="{{url('/')}}/our-services" >
