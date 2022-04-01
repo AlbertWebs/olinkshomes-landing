@@ -485,7 +485,7 @@
                         </div>
                     </li> --}}
                    <li class="menu-item">
-                      <a target="new" class="menu-link" href="https://shop.olinkshomes.com" data-href="#section-pricing">
+                      <a target="new" class="menu-link" href="https://shop.olinkshomes.com">
                          <div><i class="icon-line-shopping-cart"></i> Shop</div>
                       </a>
                    </li>
