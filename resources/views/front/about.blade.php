@@ -2,8 +2,8 @@
 @section('content')
 <section id="page-title" class="page-title-parallax page-title-dark include-header" style="padding: 250px 0; background-image: url('{{asset('olinkshomes/images/parallax/parallax-bg.jpg')}}'); background-size: cover; background-position: center center;" data-bottom-top="background-position:0px 400px;" data-top-bottom="background-position:0px -500px;">
     <div class="container clearfix" style="color:#e95e28 !important; ">
-       <h1 style="color:#e95e28 !important; ">About Us</h1>
-       <span style="color:#e95e28 !important; ">Everything you need to know about our Company</span>
+       <h1>About Us</h1>
+       <span>Everything you need to know about our Company</span>
        <ol class="breadcrumb">
           <li class="breadcrumb-item"><a style="color:#e95e28 !important; " href="{{url('/')}}">Home</a></li>
           {{-- <li class="breadcrumb-item"><a href="#">Pages</a></li> --}}
