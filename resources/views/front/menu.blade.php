@@ -3,8 +3,8 @@
        <div class="container">
           <div class="header-row">
              <div id="logo">
-                <a href="{{url('/')}}" class="standard-logo" data-dark-logo="{{url('/')}}/olinkshomes/images/OlinksHomesLogoDesign-29.png"><img src="{{url('/')}}/olinkshomes/images/OlinksHomesLogoDesign-29.png" alt="Olinks Homes"></a>
-                <a href="{{url('/')}}" class="retina-logo" data-dark-logo="{{url('/')}}/olinkshomes/images/OlinksHomesLogoDesign-29.png"><img  src="{{url('/')}}/olinkshomes/images/OlinksHomesLogoDesign-29.png" alt="Olinks Homes"></a>
+                <a href="{{url('/')}}" class="standard-logo" data-dark-logo="{{url('/')}}/olinkshomes/images/Olinks-Homes-lrg-21.png"><img src="{{url('/')}}/olinkshomes/images/Olinks-Homes-lrg-21.png" alt="Olinks Homes"></a>
+                <a href="{{url('/')}}" class="retina-logo" data-dark-logo="{{url('/')}}/olinkshomes/images/Olinks-Homes-lrg-21.png"><img  src="{{url('/')}}/olinkshomes/images/Olinks-Homes-lrg-21.png" alt="Olinks Homes"></a>
              </div>
              <div class="header-misc">
                 <div id="top-search" class="header-misc-icon">
